@@ -1,0 +1,300 @@
+<div class="overflow-hidden bg-white" dir="rtl">
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center bg-mesh overflow-hidden py-20">
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-10 transition-all duration-1000" [class.opacity-100]="isLoaded()"
+                    [class.translate-y-0]="isLoaded()" [class.opacity-0]="!isLoaded()"
+                    [class.translate-y-12]="!isLoaded()">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-3 px-5 py-2.5 glass rounded-full shadow-premium border border-white/50">
+                        <div class="h-2 w-2 bg-blue-600 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-bold text-blue-950 tracking-widest uppercase">الطلبات الشهرية</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <div class="space-y-6">
+                        <h1
+                            class="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tighter">
+                            منصة <span class="text-brand">بالجملة</span> <br />
+                            للأدوات المنزلية
+                        </h1>
+                        <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl font-medium">
+                            اربط تجارتك مباشرة مع كبار المستوردين والمصنعين. احصل على أفضل أسعار الجملة في السوق المصري
+                            والعربي من خلال منصة رقمية موحدة.
+                        </p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <a routerLink="/shop"
+                            class="group relative inline-flex items-center justify-center px-10 py-5 bg-[#2650fc] text-white font-extrabold rounded-2xl overflow-hidden transition-all duration-500 hover:bg-brand-dark hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto text-lg shadow-xl shadow-brand/20">
+                            <span class="relative z-10">ابدأ التوريد الآن</span>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-brand to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </a>
+                        <a routerLink="/register"
+                            class="group inline-flex items-center gap-4 text-brand font-bold hover:text-brand-dark transition-all text-lg">
+                            <span>سجّل كتاجر الآن</span>
+                            <div
+                                class="h-10 w-10 glass rounded-full flex items-center justify-center group-hover:translate-x-2 transition-transform shadow-premium">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                    class="rotate-180">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="flex items-center gap-12 pt-8">
+                        <div class="space-y-1">
+                            <div class="text-3xl font-black text-brand tracking-tighter">150+</div>
+                            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">مستوردون موثقون</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-3xl font-black text-brand tracking-tighter">8.4k</div>
+                            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">الطلبات الشهرية</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-3xl font-black text-brand tracking-tighter">99.9%</div>
+                            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">دقة الطلبات</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Visuals -->
+                <div class="relative transition-all duration-1000 delay-300" [class.opacity-100]="isLoaded()"
+                    [class.scale-100]="isLoaded()" [class.opacity-0]="!isLoaded()" [class.scale-95]="!isLoaded()">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-yellow-400 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 animate-pulse">
+                        </div>
+                        <div class="relative glass p-4 rounded-[2.5rem] shadow-premium">
+                            <div class="relative aspect-[5/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80"
+                                    alt="الأجهزة الذكية" title="منتجات الأجهزة الذكية"
+                                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                                <!-- Glass Card Overlay -->
+                                <div class="absolute bottom-6 left-6 right-6 p-6 glass rounded-2xl shadow-premium">
+                                    <div class="flex items-center justify-between mb-4 flex-row-reverse">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-black text-blue-950">النمو في الأجهزة
+                                                الذكية</span>
+                                            <div
+                                                class="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span
+                                            class="text-sm font-bold text-brand bg-brand/10 px-2 py-1 rounded-md text-left">+14.5%</span>
+                                    </div>
+                                    <div class="space-y-2 text-right">
+                                        <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-600 w-3/4 rounded-full"></div>
+                                        </div>
+                                        <p class="text-sm font-bold text-slate-500 uppercase">النمو في الأجهزة الذكية
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section id="categories" class="py-24 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-blue-50/20 -z-10"></div>
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-[16px] font-black text-brand uppercase tracking-[0.3em]">نظام السوق</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
+                    فئات <span class="text-brand">المنزل</span> المتخصصة
+                </h2>
+                <p class="text-slate-500 font-medium">مورّد من مستوردين عالميين معتمدين متخصصين في الأدوات والأجهزة
+                    المنزلية.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div *ngFor="let cat of categories()"
+                    class="group relative overflow-hidden rounded-2xl shadow-lg aspect-[4/5] cursor-pointer">
+                    <img [src]="cat.image" [alt]="cat.name" title="{{ cat.name }}"
+                        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent p-4 flex flex-col justify-end text-right">
+                        <h3 class="text-xl font-bold text-white mb-1">{{ cat.name }}</h3>
+                        <p class="text-sm text-white/80 font-medium">{{ cat.count }} • {{ cat.importers }}</p>
+                        <button
+                            class="mt-4 w-full rounded-xl bg-brand py-2.5 text-sm font-bold text-white hover:bg-brand-dark transition-colors">عرض
+                            المنتجات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="py-32 relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-50/30 -z-10 blur-3xl opacity-50"></div>
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-col md:flex-row-reverse justify-between items-end gap-8 mb-20">
+                <div class="max-w-2xl space-y-4 text-right">
+                    <span class="text-[16px] font-black text-brand uppercase tracking-[0.3em]">مخزون B2B</span>
+                    <h2
+                        class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter leading-tight">
+                        سوق <span class="text-brand">الجملة</span></h2>
+                    <p class="text-lg text-slate-500 font-medium max-w-xl">مخزون فوري من المستوردين المعتمدين. احمِ عملك
+                        بالترخيص المباشر وشفافية الأدوات والمنتجات المنزلية.</p>
+                </div>
+                <a routerLink="/shop"
+                    class="group flex items-center gap-3 text-brand font-black uppercase tracking-widest text-xs hover:text-brand-dark transition-all">
+                    بحث متقدم في القوائم
+                    <div
+                        class="h-10 w-10 glass rounded-full flex items-center justify-center group-hover:-translate-x-2 transition-transform shadow-premium">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="rotate-180">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <app-product-card *ngFor="let product of products()" [product]="product"></app-product-card>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Importers Section -->
+    <section id="importers" class="py-32 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-mesh opacity-10"></div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row-reverse justify-between items-end gap-8 mb-20 text-right">
+                <div class="max-w-xl space-y-4">
+                    <span class="text-[16px] font-black text-yellow-400 uppercase tracking-[0.4em]">الشركاء
+                        النخبة</span>
+                    <h2 class="text-4xl md:text-6xl text-white font-black tracking-tighter leading-[0.9]">
+                        مركز <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">المستوردين
+                            المعتمدين</span>
+                    </h2>
+                </div>
+                <button
+                    class="px-10 py-5 bg-white text-blue-950 font-black rounded-2xl hover:bg-yellow-400 transition-all uppercase text-xs tracking-widest shadow-2xl shadow-white/5">عرض
+                    جميع الشركاء</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div *ngFor="let partner of partners"
+                    class="group relative glass-dark p-8 rounded-[2.5rem] border-white/5 hover:-translate-y-4 transition-all duration-700 overflow-hidden text-right">
+                    <div class="relative z-10 space-y-6">
+                        <div class="flex items-center justify-between flex-row-reverse">
+                            <div class="h-16 w-16 bg-white rounded-2xl flex items-center justify-center p-3">
+                                <img [src]="partner.img" [alt]="partner.name" title="{{ partner.name }} - شعار الشريك"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="px-4 py-1.5 bg-yellow-400/20 border border-yellow-400/30 rounded-full">
+                                <span class="text-sm font-black text-yellow-400 uppercase tracking-widest">معتمد
+                                    A+</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-black text-white tracking-tight">{{ partner.name }}</h3>
+                            <p class="text-sm font-medium text-slate-400">{{ partner.cat }}</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 pb-4 border-b border-white/10 text-right">
+                            <div>
+                                <p class="text-[16px] font-black text-slate-500 uppercase tracking-widest mb-1">الخبرة
+                                </p>
+                                <p class="text-lg font-black text-white">{{ partner.active }}</p>
+                            </div>
+                            <div>
+                                <p class="text-[16px] font-black text-slate-500 uppercase tracking-widest mb-1">المخزون
+                                    النشط</p>
+                                <p class="text-lg font-black text-yellow-400">{{ partner.stock }}</p>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm font-black uppercase tracking-widest transition-all">عرض
+                            الملف الشخصي للمستورد</button>
+                    </div>
+                    <div
+                        class="absolute -bottom-20 -right-20 h-40 w-40 bg-blue-600/20 rounded-full blur-[80px] group-hover:scale-150 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-24 bg-mesh border-y border-blue-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 group border border-slate-100 text-right">
+                    <div
+                        class="h-16 w-16 bg-brand/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 mr-auto ml-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase">أسعار الجملة المباشرة
+                    </h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">وفر تكاليف الوسطاء واحصل على أفضل أسعار المصنع
+                        والمستوردين مباشرة لحساب مؤسستك.</p>
+                </div>
+
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 group border border-slate-100 text-right">
+                    <div
+                        class="h-16 w-16 bg-brand/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 mr-auto ml-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-600">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase">موردون موثقون</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">نحن نضمن جودة الموردين من خلال فحص دقيق
+                        للتراخيص والسجلات التجارية والقدرة الإنتاجية.</p>
+                </div>
+
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 group border border-slate-100 text-right">
+                    <div
+                        class="h-16 w-16 bg-brand/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 mr-auto ml-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand">
+                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-4 tracking-tight uppercase">دعم لوجستي متكامل</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">نظام متقدم لتتبع الشحنات وإدارة الطلبات
+                        الكبيرة لضمان وصول بضاعتك في الموعد المحدد.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

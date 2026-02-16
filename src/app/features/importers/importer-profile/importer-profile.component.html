@@ -1,0 +1,122 @@
+<div *ngIf="importer() as imp" class="min-h-screen bg-slate-50 relative overflow-hidden" dir="rtl">
+    <!-- Decorative Background -->
+    <div class="absolute top-0 left-0 w-full h-[500px] bg-slate-900 overflow-hidden">
+        <div class="absolute inset-0 bg-mesh opacity-20 rounded-xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-32 pb-20 relative z-10">
+        <!-- Breadcrumb -->
+        <a routerLink="/importers"
+            class="inline-flex items-center gap-3 text-white/70 hover:text-white mb-10 transition-all group font-black uppercase tracking-widest text-xs">
+            <lucide-icon name="arrow-right"
+                class="group-hover:-translate-x-2 transition-transform duration-500 h-5 w-5"></lucide-icon>
+            العودة للمستوردين
+        </a>
+
+        <!-- Profile Header Card -->
+        <div
+            class="bg-white rounded-[4rem] shadow-premium p-10 md:p-16 mb-12 overflow-hidden relative border border-white">
+            <div class="absolute top-0 left-0 w-full h-2.5 bg-gradient-to-r from-brand to-indigo-600"></div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+                <!-- Logo -->
+                <div class="relative shrink-0 mx-auto lg:mx-0">
+                    <div
+                        class="w-56 h-56 rounded-[3.5rem] bg-white shadow-2xl p-5 border border-slate-100 flex items-center justify-center overflow-hidden transition-transform hover:scale-105 duration-700">
+                        <img [src]="imp.img" [attr.alt]="imp.name" [attr.title]="imp.name"
+                            class="w-full h-full object-cover rounded-[2.5rem]" />
+                    </div>
+                    <div
+                        class="absolute -bottom-5 -right-5 bg-yellow-400 text-slate-900 px-6 py-3 rounded-2xl shadow-xl flex items-center gap-2 font-black text-sm border-4 border-white animate-bounce-subtle">
+                        <lucide-icon name="shield" class="h-4.5 w-4.5"></lucide-icon>
+                        معتمد A+
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="flex-1 space-y-8 text-center lg:text-right w-full">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                        <div class="space-y-2">
+                            <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">{{ imp.name }}
+                            </h1>
+                            <p class="text-xl md:text-2xl font-black text-brand">{{ imp.cat }}</p>
+                        </div>
+                        <div class="flex items-center gap-4 justify-center lg:justify-end">
+                            <button title="مشاركة الملف" aria-label="مشاركة ملف المستورد"
+                                class="h-14 w-14 glass text-slate-400 hover:text-brand transition-all flex items-center justify-center rounded-2xl shadow-sm border border-slate-100">
+                                <lucide-icon name="share-2" class="h-5 w-5"></lucide-icon>
+                            </button>
+                            <a [href]="'https://wa.me/' + imp.whatsapp.replace('+', '')" target="_blank"
+                                class="h-14 px-10 bg-emerald-500 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20 group">
+                                تواصل مباشر
+                                <lucide-icon name="phone"
+                                    class="h-5 w-5 group-hover:rotate-12 transition-transform"></lucide-icon>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="text-xl text-slate-500 leading-relaxed font-bold max-w-3xl lg:ml-0 lg:mr-auto">
+                        {{ imp.description }}
+                    </p>
+
+                    <div
+                        class="flex flex-wrap justify-center lg:justify-start gap-8 pt-4 text-slate-400 font-black uppercase tracking-widest text-[11px]">
+                        <div class="flex items-center gap-3">
+                            <lucide-icon name="map-pin" class="h-4.5 w-4.5 text-brand"></lucide-icon>
+                            {{ imp.location }}
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <lucide-icon name="globe" class="h-4.5 w-4.5 text-brand"></lucide-icon>
+                            {{ imp.website }}
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <lucide-icon name="briefcase" class="h-4.5 w-4.5 text-brand"></lucide-icon>
+                            عضو منذ {{ imp.active }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Banner -->
+            <div
+                class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-3 bg-slate-50 rounded-[2.5rem] border border-slate-100">
+                <div *ngFor="let stat of [
+                    {label: 'التقييم العام', val: imp.rating, sub: imp.reviews + ' مراجعة', color: 'text-yellow-500'},
+                    {label: 'المخزون النشط', val: imp.stock, sub: 'عنصر متاح', color: 'text-brand'},
+                    {label: 'الموظفون', val: imp.members, sub: 'خبير صناعي', color: 'text-indigo-500'},
+                    {label: 'معدل الرد', val: '98%', sub: 'بائع سريع', color: 'text-emerald-500'}
+                ]"
+                    class="bg-white p-8 rounded-[2rem] text-center shadow-sm border border-slate-200 group hover:shadow-xl transition-all duration-500">
+                    <p
+                        class="text-3xl font-black text-slate-900 group-hover:scale-110 transition-transform duration-500">
+                        {{ stat.val }}</p>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-2">{{ stat.label }}
+                    </p>
+                    <p class="text-[10px] font-black group-hover:text-slate-900 transition-colors mt-1"
+                        [ngClass]="stat.color">{{ stat.sub }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="space-y-10">
+            <div class="flex items-center justify-between">
+                <h2 class="text-3xl font-black text-slate-900 flex items-center gap-4">
+                    <div class="h-10 w-10 bg-brand rounded-xl flex items-center justify-center text-white">
+                        <lucide-icon name="package" class="h-5 w-5"></lucide-icon>
+                    </div>
+                    منتجات {{ imp.name }}
+                </h2>
+                <a routerLink="/shop"
+                    class="text-brand font-black text-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-8">عرض
+                    السوق بالكامل</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <app-product-card *ngFor="let product of importerProducts()" [product]="product"></app-product-card>
+            </div>
+        </div>
+    </div>
+</div>

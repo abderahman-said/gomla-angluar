@@ -1,0 +1,25 @@
+:host {
+    display: block;
+}
+
+.glass {
+    @apply bg-white/70 backdrop-blur-2xl border border-white shadow-2xl;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.text-brand {
+    @apply text-[#2650fc];
+}
+
+.bg-brand {
+    @apply bg-[#2650fc];
+}
+
+.shadow-premium {
+    box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.1);
+}

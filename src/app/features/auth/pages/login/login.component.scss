@@ -1,0 +1,76 @@
+:host {
+  display: block;
+}
+
+.login-bg-mesh {
+  @apply min-h-screen bg-white relative flex items-center justify-center py-20 px-4 overflow-hidden;
+
+  &::before {
+    content: '';
+    @apply absolute inset-0 -z-10;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(38, 80, 252, 0.15) 0, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(197, 160, 89, 0.1) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(26, 62, 203, 0.15) 0, transparent 50%);
+  }
+}
+
+.auth-card {
+  @apply max-w-xl w-full glass rounded-[3rem] shadow-premium border border-white/50 overflow-hidden relative;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.auth-glow-top {
+  @apply absolute -top-24 -right-24 h-48 w-48 bg-brand/10 rounded-full blur-3xl pointer-events-none;
+}
+
+.auth-glow-bottom {
+  @apply absolute -bottom-24 -left-24 h-48 w-48 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none;
+}
+
+.input-group {
+  @apply relative;
+
+  .input-icon {
+    @apply absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 transition-colors duration-300;
+  }
+}
+
+.form-input-premium {
+  @apply w-full px-6 py-4 pr-14 rounded-2xl border border-slate-200 focus:ring-4 focus:ring-brand/10 focus:border-brand/50 outline-none transition-all duration-500 font-bold text-slate-900 placeholder:text-slate-300 text-right;
+}
+
+.label-premium {
+  @apply block text-sm font-black text-slate-900 uppercase tracking-widest mb-3 mr-2;
+}
+
+.btn-premium {
+  @apply w-full flex justify-center py-5 px-4 bg-brand text-white text-base font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-brand/20 hover:bg-brand-dark hover:-translate-y-1 transition-all duration-500 active:scale-95 items-center gap-3 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.error-alert-premium {
+  @apply flex items-center gap-3 p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-bold;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

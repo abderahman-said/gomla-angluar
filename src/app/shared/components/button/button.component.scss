@@ -1,0 +1,97 @@
+.btn {
+  @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  
+  // Sizes
+  &-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  &-md {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  &-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  // Variants
+  &-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+    &:disabled {
+      @apply bg-blue-400;
+    }
+  }
+
+  &-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+    &:disabled {
+      @apply bg-gray-400;
+    }
+  }
+
+  &-outline {
+    @apply border-2 border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50 focus:ring-blue-500;
+    &:disabled {
+      @apply border-blue-400 text-blue-400;
+    }
+  }
+
+  &-ghost {
+    @apply text-gray-700 bg-transparent hover:bg-gray-100 focus:ring-gray-500;
+    &:disabled {
+      @apply text-gray-400;
+    }
+  }
+
+  &-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+    &:disabled {
+      @apply bg-red-400;
+    }
+  }
+
+  &-success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+    &:disabled {
+      @apply bg-green-400;
+    }
+  }
+
+  // Full width
+  &-full-width {
+    @apply w-full;
+  }
+
+  // Icon styles
+  &-has-icon {
+    &.btn-icon-left {
+      .btn-icon {
+        @apply ml-2;
+      }
+    }
+
+    &.btn-icon-right {
+      .btn-icon {
+        @apply mr-2;
+      }
+    }
+  }
+
+  .btn-icon {
+    @apply flex-shrink-0;
+  }
+
+  .btn-text {
+    @apply truncate;
+  }
+
+  // Loading state
+  .btn-spinner {
+    @apply animate-spin;
+  }
+
+  &-disabled {
+    @apply cursor-not-allowed;
+  }
+}

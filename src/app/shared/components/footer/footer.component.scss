@@ -1,0 +1,16 @@
+/* Footer Component Styles */
+:host {
+    display: block;
+}
+
+.footer-link {
+    @apply text-slate-400 hover:text-brand transition-colors duration-300;
+}
+
+.footer-section {
+    @apply text-right;
+}
+
+.footer-heading {
+    @apply text-xs font-bold uppercase tracking-widest mb-6 text-white;
+}

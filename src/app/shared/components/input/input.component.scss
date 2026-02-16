@@ -1,0 +1,84 @@
+.input-wrapper {
+  @apply w-full;
+}
+
+.input-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.input-required {
+  @apply text-red-500 ml-1;
+}
+
+.input-container {
+  @apply relative;
+}
+
+.input-field {
+  @apply block w-full border border-gray-300 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-0;
+  
+  &:not(.input-disabled):not(.input-error) {
+    @apply focus:border-blue-500 focus:ring-blue-500;
+  }
+
+  // Sizes
+  &-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  &-md {
+    @apply px-4 py-2 text-sm;
+  }
+
+  &-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  // States
+  &-disabled {
+    @apply bg-gray-50 text-gray-500 cursor-not-allowed;
+  }
+
+  &-error {
+    @apply border-red-500 text-red-900 focus:border-red-500 focus:ring-red-500;
+  }
+
+  &-focused {
+    @apply ring-2 ring-blue-500;
+  }
+
+  // Icon styles
+  &-has-icon {
+    &.input-icon-left {
+      @apply pl-10;
+    }
+
+    &.input-icon-right {
+      @apply pr-10;
+    }
+  }
+}
+
+.input-icon {
+  @apply absolute top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none;
+
+  &-left {
+    @apply left-3;
+  }
+
+  &-right {
+    @apply right-3;
+  }
+}
+
+.input-feedback {
+  @apply mt-1;
+}
+
+.input-helper {
+  @apply text-xs text-gray-500;
+}
+
+.input-error {
+  @apply text-xs text-red-600;
+}

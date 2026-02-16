@@ -1,0 +1,161 @@
+<div class="min-h-screen bg-white" dir="rtl">
+    <!-- Hero Section -->
+    <section class="relative py-24 bg-blue-50/30 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-100/20 blur-3xl rounded-full translate-x-1/2 -z-10">
+        </div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full shadow-premium border border-white/50 mb-8">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    class="text-brand">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <span class="text-[10px] md:text-sm font-black text-blue-900 tracking-widest uppercase">شركاء بالجملة
+                    المعتمدون</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-blue-950 tracking-tighter mb-6 leading-tight">
+                شبكة <span class="text-brand">المستوردين</span> النخبة
+            </h1>
+            <p class="text-xl text-slate-500 font-bold max-w-2xl mx-auto leading-relaxed">
+                تواصل مباشرة مع أكبر الموردين الموثقين في قطاع الأدوات والأجهزة المنزلية. شفافية كاملة في الأسعار والحد
+                الأدنى للطلب.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-12 border-b border-[#17255410] bg-white sticky top-22 z-40">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="relative max-w-2xl mx-auto">
+                <svg class="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="ابحث عن مستورد أو تخصص (مثلاً: مطبخ، إلكترونيات)..."
+                    class="w-full h-20 pr-16 pl-8 bg-slate-50 border border-slate-200 rounded-3xl text-lg font-bold focus:outline-none focus:ring-4 focus:ring-brand/10 focus:bg-white focus:border-brand transition-all shadow-inner"
+                    [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Importers Grid -->
+    <section class="py-24">
+        <div class="container mx-auto px-4 md:px-8">
+            <div *ngIf="filteredImporters().length > 0; else noResults"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div *ngFor="let imp of filteredImporters()"
+                    class="group glass-card p-8 rounded-[3rem] border border-[#17255410] hover:bg-white hover:scale-[1.02] hover:shadow-2xl transition-all duration-500 flex flex-col h-full relative overflow-hidden">
+
+                    <div
+                        class="absolute -top-10 -left-10 w-40 h-40 bg-brand/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col h-full">
+                        <!-- Importer Image -->
+                        <div class="relative h-56 rounded-[2rem] overflow-hidden mb-8 shadow-xl">
+                            <img [src]="imp.img" [alt]="imp.name" [title]="imp.name"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <div
+                                class="absolute top-5 left-5 bg-white/90 backdrop-blur px-4 py-2 rounded-2xl flex items-center gap-2 shadow-lg">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"
+                                    class="text-yellow-500">
+                                    <path
+                                        d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                                    </path>
+                                </svg>
+                                <span class="text-sm font-black text-blue-950">{{ imp.rating }}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex-grow space-y-6">
+                            <div class="space-y-2">
+                                <div class="text-[10px] font-black text-brand uppercase tracking-[0.2em]">{{ imp.cat }}
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tight">{{ imp.name }}</h3>
+                            </div>
+
+                            <p class="text-slate-500 font-bold line-clamp-2 leading-relaxed h-14">
+                                {{ imp.desc }}
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-6 py-6 border-y border-slate-50">
+                                <div class="space-y-1">
+                                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest">المخزون
+                                        النشط</div>
+                                    <div class="text-lg font-black text-slate-900 flex items-center gap-2">
+                                        {{ imp.stock }}
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest">سنوات
+                                        الخبرة</div>
+                                    <div class="text-lg font-black text-slate-900 flex items-center gap-2">
+                                        {{ imp.active }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-8">
+                            <a [routerLink]="['/importers', imp.id]"
+                                class="w-full h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center gap-3 font-black text-sm uppercase tracking-widest hover:bg-brand transition-all shadow-xl shadow-slate-200">
+                                عرض الملف بالكامل
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                                    class="translate-x-0 group-hover:-translate-x-2 transition-transform duration-500">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #noResults>
+                <div
+                    class="text-center py-32 bg-slate-50 rounded-[4rem] border-4 border-dashed border-slate-200 mx-auto max-w-4xl px-8">
+                    <div
+                        class="h-24 w-24 bg-white rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-sm">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="text-slate-300">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-black text-slate-900 mb-3">لا توجد نتائج مطابقة</h3>
+                    <p class="text-lg text-slate-500 font-bold leading-relaxed">
+                        عذراً، لم نجد أي مستوردين يطابقون بحثك. حاول استخدام كلمات بحث مختلفة أو تصفح كل الفئات.
+                    </p>
+                </div>
+            </ng-template>
+        </div>
+    </section>
+
+    <!-- Trust Features -->
+    <section class="py-24 bg-slate-50 border-t border-[#17255408]">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+                <div *ngFor="let item of [
+                    {title: 'تحقق صارم', desc: 'كل مستورد يخضع لفحص قانوني وتجاري شامل بـ 24 نقطة قبل الانضمام.'},
+                    {title: 'توريد مباشر', desc: 'نهدم الحواجز بينك وبين المصنع عبر مستوردين معتمدين فقط.'},
+                    {title: 'لوجستيات سريعة', desc: 'أنظمة تتبع متكاملة لضمان وصول شحناتك في الوقت المحدد وبأعلى جودة.'}
+                ]" class="space-y-6 group">
+                    <div
+                        class="h-24 w-24 bg-white rounded-[2.5rem] shadow-premium flex items-center justify-center mx-auto text-brand group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h4
+                        class="text-2xl font-black text-slate-900 tracking-tight transition-colors group-hover:text-brand">
+                        {{ item.title }}</h4>
+                    <p class="text-slate-500 font-bold leading-relaxed">{{ item.desc }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,20 @@
+<div class="min-h-screen flex flex-col bg-white overflow-x-hidden" dir="rtl">
+    <!-- Premium Navbar -->
+    <app-navbar [cartCount]="0"></app-navbar>
+
+    <!-- Main Content Area with Mesh Background -->
+    <main class="flex-grow bg-mesh relative">
+        <div class="  animate-fadeIn">
+            <!-- Router outlet for routed components -->
+            <router-outlet></router-outlet>
+            <ng-content></ng-content>
+        </div>
+
+        <!-- Decorative Glows -->
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-brand/5 blur-[120px] -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-yellow-400/5 blur-[120px] -z-10 pointer-events-none"></div>
+    </main>
+
+    <!-- Premium Footer -->
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,84 @@
+<div class="space-y-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <h2 class="text-2xl font-black text-slate-900">إدارة المخزون</h2>
+            <p class="text-slate-500 font-bold">تحكم في منتجاتك ومخزونك المتاح</p>
+        </div>
+        <div class="flex gap-4">
+            <div class="relative">
+                <lucide-icon name="search"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5"></lucide-icon>
+                <input type="text" placeholder="بحث في المنتجات..."
+                    class="h-12 w-64 pr-12 pl-4 bg-white border border-slate-200 rounded-xl font-bold focus:outline-none focus:ring-4 focus:ring-brand/10 transition-all">
+            </div>
+            <a routerLink="/importers/dashboard/products/add"
+                class="px-6 py-3 bg-brand text-white rounded-xl font-bold shadow-lg shadow-brand/20 hover:bg-brand-dark transition-all flex items-center gap-2">
+                <lucide-icon name="plus" class="h-5 w-5"></lucide-icon>
+                إضافة منتج
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-slate-50 border-b border-slate-100">
+                    <tr>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            المنتج</th>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            التصنيف</th>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            السعر</th>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            المخزون</th>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            الحالة</th>
+                        <th class="px-6 py-4 text-right text-xs font-black text-slate-500 uppercase tracking-widest">
+                            إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    <tr *ngFor="let product of products()" class="group hover:bg-brand/5 transition-colors">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-4">
+                                <div class="h-12 w-12 bg-slate-100 rounded-lg overflow-hidden shrink-0">
+                                    <img [src]="product.image" [alt]="product.name" [title]="product.name"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <span class="font-bold text-slate-900">{{ product.name }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-bold text-slate-600">{{ product.category }}</td>
+                        <td class="px-6 py-4 font-black text-brand">{{ product.price | currency:'EGP ':'symbol':'1.0-0'
+                            }}</td>
+                        <td class="px-6 py-4 font-bold text-slate-900">
+                            <span
+                                [ngClass]="{'text-red-500': (product.stock || 0) < 10, 'text-emerald-500': (product.stock || 0) >= 10}">
+                                {{ product.stock || 0 }} قطعة
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span
+                                class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-lg text-xs font-black inline-block">نشط</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button [routerLink]="['/importers/dashboard/products/edit', product.id]"
+                                    class="h-8 w-8 flex items-center justify-center text-slate-400 hover:text-brand hover:bg-white rounded-lg transition-all"
+                                    title="تعديل">
+                                    <lucide-icon name="edit-2" class="h-4 w-4"></lucide-icon>
+                                </button>
+                                <button (click)="deleteProduct(product.id)"
+                                    class="h-8 w-8 flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-white rounded-lg transition-all"
+                                    title="حذف">
+                                    <lucide-icon name="trash-2" class="h-4 w-4"></lucide-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+/* Dashboard component specific styles */
+:host {
+    display: block;
+}
+
+.animate-slideInUp {
+    animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RTL Adjustments if needed beyond Tailwind */
+[dir="rtl"] {
+    .hero-visual {
+        @apply left-auto right-0;
+    }
+}

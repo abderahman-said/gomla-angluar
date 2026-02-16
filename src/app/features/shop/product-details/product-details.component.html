@@ -1,0 +1,250 @@
+<div class="min-h-screen " dir="rtl" *ngIf="product() as p">
+    <!-- Breadcrumb -->
+    <div class="container mx-auto px-4 py-8">
+        <a routerLink="/shop"
+            class="inline-flex items-center gap-2 text-slate-500 hover:text-brand font-black transition-all">
+            <svg class="rotate-180" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            العودة للمتجر
+        </a>
+    </div>
+
+    <div class="container mx-auto px-4 pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20">
+
+            <!-- Gallery -->
+            <div class="space-y-6">
+                <div class="relative group">
+                    <div
+                        class="aspect-square bg-white rounded-[2.5rem] overflow-hidden shadow-premium border border-white/50">
+                        <img [src]="productImages()[selectedImageIndex()]" alt="{{ p.name }}" title="{{ p.name }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+
+                    <!-- Cert Badges -->
+                    <div class="absolute top-6 right-6 flex flex-col gap-2">
+                        <span *ngFor="let cert of certifications"
+                            [class]="cert.color + ' text-white text-[10px] font-black px-3 py-1.5 rounded-xl shadow-lg uppercase tracking-wider'">
+                            {{ cert.label }}
+                        </span>
+                    </div>
+
+                    <!-- Float Actions -->
+                    <div
+                        class="absolute top-6 left-6 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                            class="h-12 w-12 bg-white/90 backdrop-blur rounded-full shadow-xl flex items-center justify-center text-slate-400 hover:text-red-500 transition-all"
+                            title="أضف للمفضلة">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="grid grid-cols-4 gap-4">
+                    <button *ngFor="let img of productImages(); let i = index" (click)="selectedImageIndex.set(i)"
+                        [class.ring-4]="selectedImageIndex() === i" title="عرض الصورة"
+                        class="aspect-square rounded-3xl overflow-hidden bg-white shadow-sm ring-brand/20 transition-all transform active:scale-95">
+                        <img [src]="img" alt="{{ p.name }} view" title="{{ p.name }} view"
+                            class="w-full h-full object-cover">
+                    </button>
+                </div>
+
+                <!-- Specs Summary Card -->
+                <div
+                    class="bg-blue-950 rounded-[2.5rem] p-8 text-white grid grid-cols-2 gap-8 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-3xl"></div>
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div class="h-12 w-12 bg-white/10 rounded-2xl flex items-center justify-center text-yellow-400">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="m13 2-2 10h8l-9 10 2-10H5l9-10z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-blue-200 uppercase font-black tracking-widest">الجهد</p>
+                            <p class="font-black">220 – 240 V</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div class="h-12 w-12 bg-white/10 rounded-2xl flex items-center justify-center text-blue-400">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <rect x="9" y="9" width="6" height="6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-blue-200 uppercase font-black tracking-widest">التردد</p>
+                            <p class="font-black">50 / 60 Hz</p>
+                        </div>
+                    </div>
+                    <!-- More generic specs -->
+                    <div class="col-span-2 pt-4 border-t border-white/10 flex items-center gap-3">
+                        <svg class="text-green-400" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <p class="text-sm font-bold text-blue-100">مطابق تماماً للمواصفات القياسية للجودة</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="bg-brand/10 text-brand px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">{{
+                            p.category }}</span>
+                        <div class="flex items-center gap-1 text-yellow-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                </path>
+                            </svg>
+                            <span class="text-slate-900 font-black text-sm">{{ p.rating }} <span
+                                    class="text-slate-400 font-medium">(128 تقييم)</span></span>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-black text-slate-900 leading-tight">{{ p.name }}</h1>
+                    <p class="text-slate-400 font-bold uppercase tracking-widest text-sm">Model: EL-00{{ p.id }}</p>
+                </div>
+
+                <div class="flex items-baseline gap-4">
+                    <span class="text-5xl font-black text-slate-900">${{ p.averagePrice || p.price || 0 }}</span>
+                    <span class="text-2xl text-slate-300 line-through font-bold">${{ ((p.averagePrice || p.price || 0) *
+                        1.3).toFixed(2) }}</span>
+                    <span class="bg-red-50 text-red-600 px-3 py-1 rounded-xl text-sm font-black">وفر 23%</span>
+                </div>
+
+                <!-- MOQ Notice -->
+                <div class="bg-orange-50/50 border border-orange-100 rounded-[1.5rem] p-5 flex items-center gap-4">
+                    <div class="h-10 w-10 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="m21 16-4 4-4-4"></path>
+                            <path d="M17 20V4"></path>
+                            <path d="m3 8 4-4 4 4"></path>
+                            <path d="M7 4v16"></path>
+                        </svg>
+                    </div>
+                    <p class="text-orange-950 font-bold text-sm">أقل كمية للطلب: <span
+                            class="bg-orange-200/50 px-2 py-0.5 rounded-lg">5 وحدات</span> — خصومات هائلة للكميات</p>
+                </div>
+
+                <!-- Order Controls -->
+                <div class="bg-white rounded-[2.5rem] p-8 shadow-premium border border-slate-100 space-y-8">
+                    <div class="space-y-4">
+                        <label class="block text-slate-900 font-black text-lg">الكمية المطلوبة</label>
+                        <div class="flex items-center gap-4">
+                            <button (click)="handleQuantityChange(quantity() - 1)"
+                                class="h-14 w-14 rounded-2xl border-2 border-slate-100 flex items-center justify-center hover:bg-slate-50 transition-all font-black text-2xl">−</button>
+                            <input type="number" [value]="quantity()"
+                                (change)="handleQuantityChange(+($any($event).target).value)" title="الكمية"
+                                placeholder="1"
+                                class="h-14 w-24 bg-slate-50 border-none rounded-2xl text-center font-black text-xl focus:ring-4 focus:ring-brand/10">
+                            <button (click)="handleQuantityChange(quantity() + 1)"
+                                class="h-14 w-14 rounded-2xl border-2 border-slate-100 flex items-center justify-center hover:bg-slate-50 transition-all font-black text-2xl">+</button>
+                            <span class="text-slate-400 font-black uppercase tracking-widest text-sm mr-2">وحدة</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button (click)="addToCart()"
+                            class="flex-1 h-16 bg-blue-950 text-white rounded-2xl font-black text-lg shadow-2xl shadow-blue-950/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                                <path d="M3 6h18"></path>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            أضف للسلة — ${{ (p.averagePrice || p.price || 0) * quantity() }}
+                        </button>
+                        <button
+                            class="h-16 px-8 rounded-2xl border-2 border-slate-100 hover:bg-slate-50 transition-all font-black text-slate-900 flex items-center justify-center gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            طلب عرض سعر
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Supplier Quick List -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-black text-slate-900 px-2">موردين معتمدين لهذا المنتج</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div *ngFor="let s of p.suppliers || []"
+                            class="glass p-4 rounded-3xl flex items-center gap-4 hover:shadow-premium transition-all group">
+                            <img [src]="s.image" alt="{{ s.name }}" title="{{ s.name }}"
+                                class="h-12 w-12 rounded-xl object-cover">
+                            <div class="flex-1">
+                                <p class="text-slate-900 font-black text-sm">{{ s.name }}</p>
+                                <p
+                                    class="text-[10px] text-green-600 font-black uppercase tracking-widest flex items-center gap-1">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    موثق ومؤمن
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-white rounded-[2.5rem] shadow-premium border border-slate-100 overflow-hidden">
+                    <div class="flex border-b border-slate-100 bg-slate-50/50">
+                        <button *ngFor="let tab of tabs" (click)="activeTab.set(tab.id)"
+                            [class.border-brand]="activeTab() === tab.id" [class.text-brand]="activeTab() === tab.id"
+                            [class.bg-white]="activeTab() === tab.id"
+                            class="flex-1 py-5 text-sm font-black uppercase tracking-widest border-b-4 border-transparent transition-all">
+                            {{ tab.label }}
+                        </button>
+                    </div>
+                    <div class="p-8">
+                        <div *ngIf="activeTab() === 'description'" class="animate-fadeIn">
+                            <p class="text-slate-600 font-medium leading-loose">جهاز كهربائي صناعي عالي الكفاءة مصمم وفق
+                                أحدث المعايير الأوروبية. يتميز بكفاءة استهلاك طاقة مصنفة A+++، حماية متقدمة من التذبذبات
+                                والحِمل الزائد، وتقنية تحكم ذكية تضمن أداءً مستقراً على مدار الساعة.</p>
+                        </div>
+                        <div *ngIf="activeTab() === 'specs'" class="animate-fadeIn space-y-3">
+                            <div class="flex justify-between py-2 border-b border-slate-50">
+                                <span class="text-slate-400 font-bold">القدرة</span>
+                                <span class="text-slate-900 font-black">2200 W</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-slate-50">
+                                <span class="text-slate-400 font-bold">الجهد</span>
+                                <span class="text-slate-900 font-black">220-240 V</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="text-slate-400 font-bold">الضمان</span>
+                                <span class="text-slate-900 font-black">3 سنوات</span>
+                            </div>
+                        </div>
+                        <div *ngIf="activeTab() === 'shipping'" class="animate-fadeIn">
+                            <p class="text-slate-600 font-medium">شحن مجاني للطلبات فوق $500. التسليم خلال 48–72 ساعة
+                                داخل المدن الرئيسية عبر شبكة شركاء اللوجستيات المعتمدين.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Extra Bottom Gap -->
+<div class="h-24"></div>

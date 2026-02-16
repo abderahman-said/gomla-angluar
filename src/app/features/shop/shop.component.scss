@@ -1,0 +1,48 @@
+:host {
+    display: block;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideInUp {
+    animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Custom Range Input Styling */
+input[type="range"] {
+    @apply appearance-none bg-slate-200 h-2 rounded-lg cursor-pointer;
+
+    &::-webkit-slider-thumb {
+        @apply appearance-none w-5 h-5 bg-brand rounded-full border-2 border-white shadow-md transition-transform;
+
+        &:hover {
+            @apply scale-110;
+        }
+    }
+}
+
+/* Modern Select Styling */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 1.25rem;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

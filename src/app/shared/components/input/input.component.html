@@ -1,0 +1,43 @@
+<div class="input-wrapper">
+  <label *ngIf="label" [for]="inputId" class="input-label">
+    {{ label }}
+    <span *ngIf="required" class="input-required">*</span>
+  </label>
+
+  <div class="input-container">
+    <ng-container *ngIf="icon && iconPosition === 'left'">
+      <svg class="input-icon input-icon-left" width="16" height="16" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </ng-container>
+
+    <input [id]="inputId" [type]="type" [class]="inputClasses" [placeholder]="placeholder || label || 'أدخل النص هنا'"
+      [attr.title]="label || placeholder || 'حقل إدخال'" [disabled]="disabled" [readonly]="readonly"
+      [required]="required" [maxLength]="maxLength" [minLength]="minLength" [min]="min" [max]="max" [step]="step"
+      [pattern]="pattern || ''" [autocomplete]="autocomplete"
+      [attr.aria-label]="ariaLabel || label || placeholder || 'حقل إدخال'" [attr.aria-describedby]="describedBy"
+      [attr.aria-invalid]="error ? 'true' : null" [attr.aria-required]="required" [(ngModel)]="value"
+      (input)="onInput($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" />
+
+    <ng-container *ngIf="icon && iconPosition === 'right'">
+      <svg class="input-icon input-icon-right" width="16" height="16" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </ng-container>
+  </div>
+
+  <div *ngIf="helperText || error" class="input-feedback">
+    <small *ngIf="helperText && !error" [id]="helperId" class="input-helper">
+      {{ helperText }}
+    </small>
+    <small *ngIf="error" [id]="errorId" class="input-error">
+      {{ error }}
+    </small>
+  </div>
+</div>

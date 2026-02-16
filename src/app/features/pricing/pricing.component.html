@@ -1,0 +1,228 @@
+<div dir="rtl" class="min-h-screen bg-white text-blue-950 overflow-x-hidden relative">
+    <!-- Global glows -->
+    <div
+        class="absolute -top-[200px] -right-[200px] w-[700px] h-[700px] bg-blue-100/30 rounded-full blur-[120px] pointer-events-none">
+    </div>
+    <div
+        class="absolute top-[600px] -left-[300px] w-[600px] h-[600px] bg-amber-50/20 rounded-full blur-[120px] pointer-events-none">
+    </div>
+
+    <!-- Subtle grid overlay -->
+    <div
+        class="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[length:60px_60px]">
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-6 pt-24 pb-[120px] relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-24 space-y-6">
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2 bg-[#2650fc]/10 border border-brand/20 rounded-full text-[#2650fc] text-sm font-black tracking-widest uppercase shadow-sm">
+                <lucide-icon name="sparkles" class="h-3.5 w-3.5 animate-pulse"></lucide-icon>
+                نظام الاشتراكات المطور
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tighter text-blue-950">
+                استثمر في <span class="text-brand">مستقبل</span><br />
+                أعمالك التجارية
+            </h1>
+
+            <p class="text-slate-500 text-lg md:text-xl leading-relaxed max-w-[600px] mx-auto font-bold">
+                حلول توريد رقمية متكاملة لربط المستوردين بأكبر شبكة تجار تجزئة في المنطقة.
+            </p>
+
+            <!-- Billing toggle -->
+            <div
+                class="inline-flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-3xl p-2 pl-6 shadow-inner">
+                <button (click)="isYearly.set(false)" class="text-[15px] font-black tracking-tight transition-colors"
+                    [ngClass]="!isYearly() ? 'text-brand' : 'text-slate-400'">شهرياً</button>
+
+                <button (click)="toggleBilling()" title="تبديل نوع الاشتراك"
+                    aria-label="تبديل بين الاشتراك الشهري والسنوي"
+                    class="w-[60px] h-[32px] rounded-full border-2 relative p-0 transition-all duration-500 cursor-pointer"
+                    [ngClass]="isYearly() ? 'bg-brand border-brand-dark' : 'bg-slate-200 border-slate-300'">
+                    <div class="absolute top-[2px] w-6 h-6 rounded-full transition-all duration-500 shadow-md"
+                        [ngClass]="isYearly() ? 'right-[2px] bg-white' : 'right-[30px] bg-slate-500'">
+                    </div>
+                </button>
+
+                <button (click)="isYearly.set(true)" class="text-[15px] font-black tracking-tight transition-colors"
+                    [ngClass]="isYearly() ? 'text-brand' : 'text-slate-400'">سنوياً</button>
+
+                <div
+                    class="bg-brand text-white px-3 py-1.5 rounded-2xl text-[16px] font-black tracking-wider animate-bounce shadow-lg">
+                    وفر 20%
+                </div>
+            </div>
+        </div>
+
+        <!-- Plans Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-[120px] items-stretch">
+            <div *ngFor="let plan of plans"
+                class="relative rounded-[2rem] p-10 transition-all duration-500 cursor-default flex flex-col gap-8 group"
+                [ngClass]="plan.popular 
+                    ? 'bg-slate-900 border-2 border-brand/50 shadow-2xl shadow-brand/20 -translate-y-4' 
+                    : 'bg-white border border-slate-100 shadow-xl hover:-translate-y-2'">
+
+                <!-- Popular badge -->
+                <div *ngIf="plan.popular"
+                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand text-white text-[10px] font-black tracking-[0.2em] uppercase px-6 py-2 rounded-full z-10 shadow-xl">
+                    الأكثر طلباً
+                </div>
+
+                <div class="flex items-center gap-5 relative">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                        [style.background]="plan.accentBg" [style.border]="'1px solid ' + plan.accent + '33'">
+                        <lucide-icon [name]="plan.icon" class="h-7 w-7" [style.color]="plan.accent"></lucide-icon>
+                    </div>
+                    <div>
+                        <div class="text-[16px] font-black tracking-[0.1em] uppercase mb-1" [style.color]="plan.accent">
+                            {{ plan.name }}
+                        </div>
+                        <div class="text-2xl font-black" [ngClass]="plan.popular ? 'text-white' : 'text-slate-900'">{{
+                            plan.nameAr }}</div>
+                    </div>
+                </div>
+
+                <p class="text-sm font-bold leading-relaxed m-0 relative"
+                    [ngClass]="plan.popular ? 'text-slate-400' : 'text-slate-500'">
+                    {{ plan.tagline }}
+                </p>
+
+                <div class="relative border-t pt-8" [ngClass]="plan.popular ? 'border-white/10' : 'border-slate-100'">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-5xl md:text-6xl font-black leading-none tracking-tighter"
+                            [style.color]="plan.monthlyPrice === 0 ? (plan.popular ? '#fff' : '#0f172a') : plan.accent">
+                            {{ (isYearly() ? plan.yearlyPrice : plan.monthlyPrice) === 0 ? 'مجاناً' : '$' + (isYearly()
+                            ? plan.yearlyPrice : plan.monthlyPrice) }}
+                        </span>
+                        <span *ngIf="plan.monthlyPrice > 0" class="text-xs font-black uppercase tracking-widest"
+                            [ngClass]="plan.popular ? 'text-slate-500' : 'text-slate-400'">
+                            / {{ isYearly() ? 'شهر (دفع سنوي)' : 'شهرياً' }}
+                        </span>
+                    </div>
+                    <div *ngIf="isYearly() && plan.monthlyPrice > 0"
+                        class="mt-3 text-xs font-black flex items-center gap-2">
+                        <span class="line-through text-slate-500">${{ plan.monthlyPrice }}</span>
+                        <span class="bg-brand/10 text-brand px-2 py-1 rounded-lg">وفر {{ getSavings(plan) }}%</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 relative flex-1">
+                    <div *ngFor="let f of plan.features" class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                            [style.background]="plan.accent + '18'" [style.border]="'1px solid ' + plan.accent + '33'">
+                            <lucide-icon name="check" class="h-3 w-3" [style.color]="plan.accent"></lucide-icon>
+                        </div>
+                        <span class="text-sm font-bold"
+                            [ngClass]="plan.popular ? 'text-slate-300' : 'text-slate-600'">{{ f }}</span>
+                    </div>
+                </div>
+
+                <button
+                    class="w-full h-16 rounded-2xl text-[15px] font-black tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
+                    [ngClass]="plan.ctaStyle === 'solid'
+                        ? 'bg-brand text-white shadow-xl shadow-brand/20 hover:bg-brand-dark hover:scale-[1.02]'
+                        : plan.ctaStyle === 'gold'
+                            ? 'bg-gradient-to-br from-amber-500 (245,158,11) to-amber-600 text-slate-900 shadow-xl shadow-amber-500/20 hover:scale-[1.02]'
+                            : 'bg-slate-50 text-slate-900 border border-slate-200 hover:bg-white hover:scale-[1.02] shadow-sm'">
+                    {{ plan.cta }}
+                    <lucide-icon name="arrow-left" class="h-4.5 w-4.5"></lucide-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Comparison Strip -->
+        <div class="bg-slate-50 border border-slate-200 rounded-[3rem] p-10 md:p-14 mb-[120px] shadow-sm">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-14">
+                <div *ngFor="let stat of [
+                    {icon: 'building', label: 'مستورد معتمد', val: '+2,400'},
+                    {icon: 'shield', label: 'منتج نشط', val: '+85,000'},
+                    {icon: 'zap', label: 'دعم مباشر', val: '24/7'},
+                    {icon: 'check', label: 'معدل الرضا', val: '98.7%'}
+                ]" class="flex items-center gap-5 group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-500 text-brand">
+                        <lucide-icon [name]="stat.icon" class="h-6 w-6"></lucide-icon>
+                    </div>
+                    <div>
+                        <div class="text-2xl md:text-3xl font-black text-slate-900 leading-none tracking-tighter">{{
+                            stat.val }}</div>
+                        <div class="text-[10px] font-black text-slate-400 mt-2 uppercase tracking-widest">{{ stat.label
+                            }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center space-y-4">
+                <h2 class="text-4xl font-black text-slate-900 tracking-tighter">الأسئلة <span
+                        class="text-brand">الشائعة</span></h2>
+                <p class="text-slate-500 font-bold">كل ما تريد معرفته عن العضوية والاشتراكات.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div *ngFor="let faq of faqs; let i = index"
+                    class="rounded-3xl border transition-all duration-300 overflow-hidden"
+                    [ngClass]="openFaqIndex() === i ? 'bg-slate-50 border-brand/20 shadow-lg' : 'bg-white border-slate-100 hover:border-slate-200'">
+                    <button (click)="toggleFaq(i)" class="w-full p-8 flex items-center justify-between text-right">
+                        <span class="text-lg font-black text-slate-900"
+                            [ngClass]="{'text-brand': openFaqIndex() === i}">{{ faq.q }}</span>
+                        <div class="h-10 w-10 rounded-xl flex items-center justify-center transition-all bg-white shadow-sm border"
+                            [ngClass]="{'rotate-180 border-brand/20 text-brand': openFaqIndex() === i, 'text-slate-400': openFaqIndex() !== i}">
+                            <lucide-icon name="chevron-down" class="h-5 w-5"></lucide-icon>
+                        </div>
+                    </button>
+                    <div *ngIf="openFaqIndex() === i" class="px-8 pb-8 pt-0 animate-fadeInUp">
+                        <p class="text-slate-600 font-bold leading-relaxed">{{ faq.a }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div
+            class="mt-32 relative rounded-[4rem] p-16 md:p-24 text-center overflow-hidden bg-slate-900 text-white shadow-2xl">
+            <div
+                class="absolute -top-[100px] -right-[100px] w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px] pointer-events-none">
+            </div>
+            <div
+                class="absolute -bottom-[100px] -left-[100px] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none">
+            </div>
+
+            <div
+                class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:40px_40px]">
+            </div>
+
+            <div class="relative z-10 max-w-3xl mx-auto space-y-10">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-6 py-2.5 text-blue-200 text-[10px] font-black tracking-[0.2em] uppercase">
+                    <lucide-icon name="sparkles" class="h-3.5 w-3.5"></lucide-icon>
+                    انضم للنخبة اليوم
+                </div>
+
+                <h2 class="text-white text-4xl md:text-6xl font-black leading-[1.1] tracking-tighter">
+                    هل أنت مستعد لمضاعفة <br />
+                    <span class="text-brand">أرقام مبيعاتك؟</span>
+                </h2>
+
+                <p class="text-slate-400 text-lg md:text-xl leading-relaxed font-bold">
+                    انخرط في أكبر شبكة رقمية لقطاع التوريد المنزلي في الشرق الأوسط وابدأ في إدارة طلبات الجملة بذكاء.
+                </p>
+
+                <div class="flex gap-6 justify-center flex-wrap pt-4">
+                    <a routerLink="/auth/register"
+                        class="h-16 px-12 bg-white text-slate-900 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all hover:scale-105 shadow-xl shadow-white/5">
+                        اشترك الآن كمستورد
+                        <lucide-icon name="arrow-left" class="h-5 w-5"></lucide-icon>
+                    </a>
+                    <button
+                        class="h-16 px-10 bg-white/5 text-white border border-white/10 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-white/10 transition-all">
+                        تواصل معنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

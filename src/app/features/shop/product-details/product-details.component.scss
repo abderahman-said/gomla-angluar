@@ -1,0 +1,33 @@
+:host {
+    display: block;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.shadow-premium {
+    box-shadow: 0 25px 50px -12px rgba(38, 80, 252, 0.08);
+}
+
+.glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

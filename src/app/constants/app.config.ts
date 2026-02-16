@@ -1,13 +1,15 @@
+const _env = (typeof process !== 'undefined' ? process.env : {}) as Record<string, string | undefined>;
+
 export const APP_CONFIG = {
   // App info
   APP_NAME: 'بالجملة',
   APP_NAME_EN: 'Gomla',
   APP_VERSION: '1.0.0',
   APP_DESCRIPTION: 'منصة متكاملة لرقمنة قطاع التجارة بالجملة (B2B)',
-  
+
   // API configuration
   API: {
-    BASE_URL: process.env['NX_API_BASE_URL'] || 'http://localhost:3000/api',
+    BASE_URL: _env['NX_API_BASE_URL'] || 'http://localhost:3000/api',
     TIMEOUT: 30000,
     RETRY_ATTEMPTS: 3,
     RETRY_DELAY: 1000
@@ -98,8 +100,8 @@ export const APP_CONFIG = {
 
   // Analytics
   ANALYTICS: {
-    GOOGLE_ANALYTICS_ID: process.env['NX_GA_ID'] || '',
-    ENABLE_TRACKING: process.env['NODE_ENV'] === 'production'
+    GOOGLE_ANALYTICS_ID: _env['NX_GA_ID'] || '',
+    ENABLE_TRACKING: _env['NODE_ENV'] === 'production'
   },
 
   // Features flags
@@ -114,11 +116,11 @@ export const APP_CONFIG = {
 
   // External services
   EXTERNAL: {
-    MAPS_API_KEY: process.env['NX_MAPS_API_KEY'] || '',
+    MAPS_API_KEY: _env['NX_MAPS_API_KEY'] || '',
     PAYMENT_GATEWAY: {
       PROVIDER: 'stripe', // or 'paypal', 'paymob'
-      PUBLIC_KEY: process.env['NX_PAYMENT_PUBLIC_KEY'] || '',
-      WEBHOOK_SECRET: process.env['NX_PAYMENT_WEBHOOK_SECRET'] || ''
+      PUBLIC_KEY: _env['NX_PAYMENT_PUBLIC_KEY'] || '',
+      WEBHOOK_SECRET: _env['NX_PAYMENT_WEBHOOK_SECRET'] || ''
     },
     EMAIL: {
       PROVIDER: 'sendgrid', // or 'aws-ses', 'mailgun'
@@ -127,14 +129,14 @@ export const APP_CONFIG = {
     },
     SMS: {
       PROVIDER: 'twilio', // or 'aws-sns', 'messagebird'
-      FROM_NUMBER: process.env['NX_SMS_FROM_NUMBER'] || ''
+      FROM_NUMBER: _env['NX_SMS_FROM_NUMBER'] || ''
     }
   },
 
   // Development
   DEVELOPMENT: {
-    ENABLE_MOCK_DATA: process.env['NODE_ENV'] === 'development',
-    LOG_LEVEL: process.env['NX_LOG_LEVEL'] || 'info',
-    ENABLE_DEBUG_MODE: process.env['NODE_ENV'] === 'development'
+    ENABLE_MOCK_DATA: _env['NODE_ENV'] === 'development',
+    LOG_LEVEL: _env['NX_LOG_LEVEL'] || 'info',
+    ENABLE_DEBUG_MODE: _env['NODE_ENV'] === 'development'
   }
 } as const;

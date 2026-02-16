@@ -1,0 +1,165 @@
+<div class="min-h-screen " dir="rtl">
+    <!-- Header Banner -->
+    <div class="bg-blue-950 text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-mesh opacity-20 rounded-xl"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl sm:text-6xl font-black mb-6 animate-fadeIn">سوق بالجملة</h1>
+            <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto font-medium">
+                استعرض آلاف المنتجات من كبار الموردين والمصنعين بأسعار تنافسية وحصرية.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 sm:py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <!-- Sidebar: Filters (Desktop) -->
+            <aside class="hidden lg:block w-80 space-y-6">
+                <!-- Search Box -->
+                <div class="glass p-6 rounded-3xl shadow-premium">
+                    <h3 class="text-lg font-black text-slate-900 mb-4">البحث</h3>
+                    <div class="relative">
+                        <input type="text" [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)"
+                            placeholder="ابحث عن منتج..."
+                            class="w-full pr-12 pl-4 py-3 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-brand/10 focus:border-brand/50 outline-none transition-all font-bold">
+                        <lucide-icon name="search"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5"></lucide-icon>
+                    </div>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="glass p-6 rounded-3xl shadow-premium">
+                    <h3 class="text-lg font-black text-slate-900 mb-4">الترتيب حسب</h3>
+                    <select (change)="setSort($event)" title="خيارات الترتيب"
+                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-brand/10 focus:border-brand/50 outline-none transition-all font-bold appearance-none cursor-pointer">
+                        <option *ngFor="let opt of sortOptions" [value]="opt.value">{{ opt.label }}</option>
+                    </select>
+                </div>
+
+                <!-- Price Range -->
+                <div class="glass p-6 rounded-3xl shadow-premium">
+                    <h3 class="text-lg font-black text-slate-900 mb-4">نطاق السعر</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-sm font-bold text-slate-600">
+                            <span>{{ priceRange().min }} $</span>
+                            <span>{{ priceRange().max }} $</span>
+                        </div>
+                        <input type="range" min="0" max="5000" [value]="priceRange().max"
+                            (input)="onPriceChange('max', $event)" title="نطاق السعر الأقصى"
+                            aria-label="نطاق السعر الأقصى"
+                            class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand">
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="glass p-6 rounded-3xl shadow-premium">
+                    <h3 class="text-lg font-black text-slate-900 mb-4">تصنيفات المنتجات</h3>
+                    <div class="space-y-2">
+                        <button (click)="setCategory('الكل')"
+                            class="w-full text-right px-4 py-2 rounded-xl transition-all font-bold flex items-center justify-between"
+                            [class.bg-brand]="selectedCategory() === 'الكل'"
+                            [class.text-white]="selectedCategory() === 'الكل'"
+                            [class.text-slate-600]="selectedCategory() !== 'الكل'"
+                            [class.hover:bg-slate-100]="selectedCategory() !== 'الكل'">
+                            الكل
+                        </button>
+                        <button *ngFor="let cat of categories" (click)="setCategory(cat.name)"
+                            class="w-full text-right px-4 py-2 rounded-xl transition-all font-bold flex items-center justify-between"
+                            [class.bg-brand]="selectedCategory() === cat.name"
+                            [class.text-white]="selectedCategory() === cat.name"
+                            [class.text-slate-600]="selectedCategory() !== cat.name"
+                            [class.hover:bg-slate-100]="selectedCategory() !== cat.name">
+                            {{ cat.name }}
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active Filter Reset -->
+                <button *ngIf="activeFiltersCount() > 0" (click)="clearAllFilters()"
+                    class="w-full py-4 text-brand font-black bg-brand/5 border border-brand/20 rounded-3xl hover:bg-brand/10 transition-all flex items-center justify-center gap-2">
+                    <lucide-icon name="x" class="h-5 w-5"></lucide-icon>
+                    مسح جميع المرشحات
+                </button>
+            </aside>
+
+            <!-- Main Content: Product Grid -->
+            <main class="flex-1">
+                <!-- Mobile Header Area -->
+                <div class="lg:hidden flex flex-col gap-4 mb-8">
+                    <div class="relative">
+                        <input type="text" [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)"
+                            placeholder="ابحث عن منتج..."
+                            class="w-full pr-12 pl-4 py-4 bg-white border border-slate-200 rounded-3xl shadow-premium outline-none font-bold">
+                        <lucide-icon name="search"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5"></lucide-icon>
+                    </div>
+                    <button (click)="toggleMobileFilters()"
+                        class="w-full py-4 bg-white border border-slate-200 rounded-3xl font-black text-slate-900 shadow-premium flex items-center justify-center gap-2">
+                        <lucide-icon name="list-filter" class="h-5 w-5"></lucide-icon>
+                        المرشحات ({{ activeFiltersCount() }})
+                    </button>
+                </div>
+
+                <!-- Results Context -->
+                <div class="flex items-center justify-between mb-8 px-2">
+                    <p class="text-slate-500 font-bold">
+                        عرض <span class="text-slate-900">{{ filteredProducts().length }}</span> منتج
+                    </p>
+                    <div class="hidden lg:flex items-center gap-4">
+                        <span class="text-sm font-bold text-slate-400">ترتيب سريع:</span>
+                        <div class="flex bg-slate-100 p-1 rounded-xl">
+                            <button (click)="sortBy.set('newest')"
+                                class="px-4 py-1.5 rounded-lg text-sm font-bold transition-all"
+                                [class.bg-white]="sortBy() === 'newest'" [class.shadow-sm]="sortBy() === 'newest'"
+                                [class.text-slate-900]="sortBy() === 'newest'"
+                                [class.text-slate-500]="sortBy() !== 'newest'">الأحدث</button>
+                            <button (click)="sortBy.set('price-low')"
+                                class="px-4 py-1.5 rounded-lg text-sm font-bold transition-all"
+                                [class.bg-white]="sortBy() === 'price-low'" [class.shadow-sm]="sortBy() === 'price-low'"
+                                [class.text-slate-900]="sortBy() === 'price-low'"
+                                [class.text-slate-500]="sortBy() !== 'price-low'">الأقل سعراً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                    <app-product-card *ngFor="let product of filteredProducts()" [product]="product"
+                        class="animate-slideInUp"></app-product-card>
+                </div>
+
+                <!-- Empty State -->
+                <div *ngIf="filteredProducts().length === 0" class="py-32 text-center animate-fadeIn">
+                    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <lucide-icon name="search" class="text-slate-300 h-10 w-10"></lucide-icon>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-2">لا توجد منتجات تطابق بحثك</h3>
+                    <p class="text-slate-500 font-medium mb-8">حاول استخدام كلمات بحث أخرى أو مسح المرشحات.</p>
+                    <button (click)="clearAllFilters()"
+                        class="px-8 py-3 bg-brand text-white rounded-2xl font-black hover:bg-brand-dark transition-all shadow-premium">
+                        مسح المرشحات
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Filters Drawer (Overlay) -->
+<div *ngIf="showFilters()" class="fixed inset-0 z-[60] lg:hidden animate-fadeIn">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" (click)="toggleMobileFilters()"></div>
+    <div class="absolute inset-y-0 right-0 w-80 bg-white shadow-2xl p-8 overflow-y-auto animate-slideInRight" dir="rtl">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-black text-slate-900">المرشحات</h2>
+            <button (click)="toggleMobileFilters()" class="p-2 bg-slate-100 rounded-xl" title="إغلاق التصفية"
+                aria-label="إغلاق التصفية">
+                <lucide-icon name="x" class="h-6 w-6"></lucide-icon>
+            </button>
+        </div>
+
+        <div class="space-y-10">
+            <!-- Reuse sidebar components simplified for mobile if needed, or keep same structure -->
+            <!-- For now, the layout is clean enough to share most logic -->
+        </div>
+    </div>
+</div>
