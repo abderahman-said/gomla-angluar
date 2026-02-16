@@ -21,15 +21,11 @@ interface ImporterDetail {
 }
 
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-importer-profile',
     standalone: true,
     imports: [CommonModule, RouterModule, ProductCardComponent, LucideAngularModule],
-    providers: [
-        { provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }
-    ],
     templateUrl: './importer-profile.component.html',
     styleUrl: './importer-profile.component.scss'
 })

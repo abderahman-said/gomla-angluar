@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-importer-dashboard',
     standalone: true,
     imports: [CommonModule, RouterModule, LucideAngularModule],
-    providers: [{ provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }],
     templateUrl: './importer-dashboard.component.html',
     styleUrl: './importer-dashboard.component.scss'
 })

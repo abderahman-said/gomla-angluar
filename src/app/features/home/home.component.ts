@@ -5,15 +5,11 @@ import { ProductCardComponent } from '../../shared/components/product-card/produ
 import { SAMPLE_PRODUCTS } from '../../core/data/products.data';
 
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     imports: [CommonModule, RouterModule, ProductCardComponent, LucideAngularModule],
-    providers: [
-        { provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }
-    ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
 })

@@ -6,15 +6,11 @@ import { map } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
     imports: [CommonModule, RouterModule, LucideAngularModule],
-    providers: [
-        { provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }
-    ],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss'
 })

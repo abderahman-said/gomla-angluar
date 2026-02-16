@@ -2,14 +2,12 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../../../core/config/lucide-icons.config';
 import { SAMPLE_PRODUCTS } from '../../../../core/data/products.data';
 
 @Component({
   selector: 'app-inventory',
   standalone: true,
   imports: [CommonModule, RouterModule, LucideAngularModule],
-  providers: [{ provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
 })

@@ -25,15 +25,11 @@ interface Faq {
 }
 
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-pricing',
     standalone: true,
     imports: [CommonModule, RouterModule, LucideAngularModule],
-    providers: [
-        { provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }
-    ],
     templateUrl: './pricing.component.html',
     styleUrl: './pricing.component.scss'
 })

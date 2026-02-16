@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../../core/config/lucide-icons.config';
 import { SAMPLE_PRODUCTS } from '../../../core/data/products.data';
 
 @Component({
   selector: 'app-manage-product',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, LucideAngularModule, RouterModule],
-  providers: [{ provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }],
   templateUrl: './manage-product.component.html',
   styleUrl: './manage-product.component.scss'
 })

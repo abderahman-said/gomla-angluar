@@ -6,15 +6,11 @@ import { ProductCardComponent } from '../../shared/components/product-card/produ
 import { SAMPLE_PRODUCTS, SAMPLE_CATEGORIES } from '../../core/data/products.data';
 
 import { LucideAngularModule } from 'lucide-angular';
-import { LUCIDE_ICONS } from '../../core/config/lucide-icons.config';
 
 @Component({
     selector: 'app-shop',
     standalone: true,
     imports: [CommonModule, RouterModule, FormsModule, ProductCardComponent, LucideAngularModule],
-    providers: [
-        { provide: LUCIDE_ICONS, useValue: LUCIDE_ICONS }
-    ],
     templateUrl: './shop.component.html',
     styleUrl: './shop.component.scss'
 })
