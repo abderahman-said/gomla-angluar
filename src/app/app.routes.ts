@@ -7,12 +7,12 @@ export const routes: Routes = [
   {
     path: 'auth/login',
     loadComponent: () => import('./features/auth/pages/login/login.component').then(m => m.LoginComponent),
-    title: 'تسجيل الدخول - بالجملة'
+    title: 'Login - Hotel Booking'
   },
   {
     path: 'auth/register',
     loadComponent: () => import('./features/auth/pages/register/register.component').then(m => m.RegisterComponent),
-    title: 'طلب انضمام - بالجملة'
+    title: 'Register - Hotel Booking'
   },
 
   {
@@ -22,12 +22,17 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
-        title: 'بالجملة - منصة التجارة بالجملة المتكاملة'
+        title: 'Hotel Booking - Find Your Perfect Stay'
+      },
+      {
+        path: 'hotels',
+        loadComponent: () => import('./features/hotels/hotels.component').then(m => m.HotelsComponent),
+        title: 'Hotels - Hotel Booking'
       },
       {
         path: 'dashboard',
         loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
-        title: 'لوحة التحكم - بالجملة',
+        title: 'Dashboard - Hotel Booking',
         data: {
           roles: [UserRole.ADMIN, UserRole.IMPORTER, UserRole.MANUFACTURER, UserRole.RETAILER, UserRole.WHOLESALER]
         }
@@ -35,27 +40,27 @@ export const routes: Routes = [
       {
         path: 'shop',
         loadComponent: () => import('./features/shop/shop.component').then(m => m.ShopComponent),
-        title: 'السوق - بالجملة'
+        title: 'Shop - Hotel Booking'
       },
       {
         path: 'shop/product/:id',
         loadComponent: () => import('./features/shop/product-details/product-details.component').then(m => m.ProductDetailsComponent),
-        title: 'تفاصيل المنتج - بالجملة'
+        title: 'Product Details - Hotel Booking'
       },
       {
         path: 'pricing',
         loadComponent: () => import('./features/pricing/pricing.component').then(m => m.PricingComponent),
-        title: 'الأسعار - بالجملة'
+        title: 'Pricing - Hotel Booking'
       },
       {
         path: 'importers',
         loadComponent: () => import('./features/importers/importers.component').then(m => m.ImportersComponent),
-        title: 'المستوردون - بالجملة'
+        title: 'Importers - Hotel Booking'
       },
       {
         path: 'importers/:id',
         loadComponent: () => import('./features/importers/importer-profile/importer-profile.component').then(m => m.ImporterProfileComponent),
-        title: 'ملف المستورد - بالجملة'
+        title: 'Importer Profile - Hotel Booking'
       }
     ]
   },

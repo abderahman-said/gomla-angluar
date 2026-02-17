@@ -66,8 +66,8 @@ export class PricingComponent {
             monthlyPrice: 59,
             yearlyPrice: 49,
             icon: 'zap',
-            accent: '#2650fc',
-            accentBg: 'rgba(38,80,252,0.1)',
+            accent: '#530084',
+            accentBg: 'rgba(83,0,132,0.1)',
             features: [
                 'إضافة منتجات غير محدودة',
                 'شارة "مستورد معتمد"',

@@ -5,7 +5,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { map } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule, Star, Heart, Users, Search } from 'lucide-angular';
 
 @Component({
     selector: 'app-navbar',
@@ -20,6 +20,12 @@ export class NavbarComponent {
 
     @Input() cartCount = 0;
 
+    // Lucide icons
+    readonly Star = Star;
+    readonly Heart = Heart;
+    readonly Users = Users;
+    readonly Search = Search;
+
     isMobileMenuOpen = signal(false);
     isSearchOpen = signal(false);
 
@@ -30,9 +36,9 @@ export class NavbarComponent {
     );
 
     navLinks = [
-        { name: 'السوق', href: '/shop' },
-        { name: 'الشركاء', href: '/importers' },
-        { name: 'الأسعار', href: '/pricing' }
+        { name: 'Home', href: '/' },
+        { name: 'Hotels', href: '/hotels' },
+        { name: 'About', href: '/about' }
     ];
 
     toggleMobileMenu() {

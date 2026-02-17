@@ -1,222 +1,527 @@
-<div class="overflow-hidden   " dir="rtl">
-    <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center  overflow-hidden py-10 md:py-20 lg:py-0">
-        <div class="container mx-auto px-4 md:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Left Content -->
-                <div class="space-y-8 md:space-y-10 transition-all duration-1000"
-                    [ngClass]="loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-                    <div
-                        class="inline-flex items-center gap-3 px-6 py-3 glass rounded-full shadow-premium border border-white/50 animate-fadeInLeft">
-                        <div
-                            class="h-2.5 w-2.5 bg-brand rounded-full animate-pulse shadow-[0_0_15px_rgba(38,80,252,0.8)]">
-                        </div>
-                        <span class="text-[10px] md:text-sm font-black text-blue-900 tracking-widest uppercase">منصة
-                            التوريدات الأفضل في الشرق الأوسط</span>
-                    </div>
+<div class="overflow-hidden" dir="ltr">
+  <!-- Navigation Header -->
 
-                    <div class="space-y-6">
-                        <h1 class="text-4xl md:text-6xl   font-black text-slate-900 leading-[1.1] tracking-tighter">
-                            منصة <span class="text-brand">بالجملة</span> <br />
-                            للأجهزة المنزلية
-                        </h1>
-                        <p class="text-lg md:text-xl text-slate-500 leading-relaxed max-w-xl font-bold">
-                            اربط تجارتك مباشرة مع كبار المستوردين والمصنعين. احصل على أفضل أسعار الجملة في السوق المصري
-                            والعربي من خلال منصة رقمية موحدة.
-                        </p>
-                    </div>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-6">
-                        <a routerLink="/shop"
-                            class="w-full sm:w-auto h-16 px-10 bg-brand text-white font-black text-lg rounded-2xl flex items-center justify-center shadow-xl shadow-brand/20 hover:bg-brand-dark hover:-translate-y-1 transition-all">
-                            ابدأ التوريد الآن
-                        </a>
-                        <a routerLink="/auth/register"
-                            class="group flex items-center gap-4 text-brand font-black text-lg hover:text-brand-dark transition-all">
-                            <span>سجّل كتاجر الآن</span>
-                            <div
-                                class="h-12 w-12 glass rounded-full flex items-center justify-center group-hover:-translate-x-2 transition-transform shadow-premium">
-                                <lucide-icon name="arrow-left" class="h-5 w-5"></lucide-icon>
-                            </div>
-                        </a>
-                    </div>
+  <!-- Hero Section with Enhanced Hotel Search -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <!-- Background with hotel image -->
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80"
+        alt="Luxury Hotel" class="w-full h-full object-cover transform scale-105">
+      <!-- Enhanced gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-800/70 via-slate-900/85 to-amber-950/95"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-800/50"></div>
+    </div>
 
-                    <div class="flex items-center gap-8 md:gap-12 pt-8">
-                        <div *ngFor="let s of [{val: '150+', label: 'مستوردون'}, {val: '8.4k', label: 'طلبات'}, {val: '99%', label: 'دقة'}]"
-                            class="space-y-1">
-                            <div class="text-2xl md:text-3xl font-black text-brand tracking-tighter">{{ s.val }}</div>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ s.label }}</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Enhanced floating elements -->
+    <div class="absolute top-20 left-10 w-40 h-40 bg-amber-600/15 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl animate-pulse delay-1000">
+    </div>
 
-                <!-- Right Content (Visuals) -->
-                <div class="relative transition-all duration-1000 delay-300 hidden lg:block"
-                    [ngClass]="loaded() ? 'opacity-100 scale-100' : 'opacity-0 scale-95'">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-10 bg-[radial-gradient(circle_at_50%_50%,#2650fc30_0%,transparent_70%)] rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-1000 animate-pulse">
-                        </div>
-                        <div
-                            class="relative glass p-6 rounded-[4rem] shadow-premium-dark border border-white/40 backdrop-blur-3xl">
-                            <div class="relative aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl">
-                                <img src="/hero_premium.png" alt="الأجهزة الفاخرة" title="بالجملة - الأجهزة الفاخرة"
-                                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                                <div
-                                    class="absolute bottom-6 left-6 right-6 p-6 glass rounded-2xl shadow-premium animate-fadeInUp">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <div class="flex items-center gap-2">
-                                            <div
-                                                class="h-8 w-8 bg-brand rounded-lg flex items-center justify-center text-white">
-                                                <lucide-icon name="zap" class="h-4 w-4"></lucide-icon>
-                                            </div>
-                                            <span class="text-sm font-black text-slate-900">نمو قطاع الأجهزة</span>
-                                        </div>
-                                        <span
-                                            class="text-sm font-black text-brand bg-brand/10 px-2 py-1 rounded-lg">+14.5%</span>
-                                    </div>
-                                    <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                        <div class="h-full bg-brand w-3/4 rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="relative z-10 px-4 md:px-12 py-20 container mx-auto  w-full">
+      <div class="space-y-20">
+        <!-- Hero Content -->
+        <div class="text-center space-y-10 text-white">
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-3 bg-slate-900/60 backdrop-blur-md rounded-full px-8 py-3 border border-amber-500/30 shadow-2xl">
+            <span class="text-amber-300 text-lg"> <lucide-icon [img]="Hotel" [size]="20" /></span>
+            <p class="font-sans text-sm font-bold tracking-widest uppercase text-amber-100">Find Your Perfect Hotel</p>
+          </div>
+
+          <!-- Heading -->
+          <h1 class="font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-tight">
+            <span class="block text-white drop-shadow-2xl">Book Your</span>
+            <span
+              class="block bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200 bg-clip-text text-transparent drop-shadow-lg font-medium italic">
+              Dream Stay
+            </span>
+          </h1>
+
+          <!-- Description -->
+          <p
+            class="text-lg md:text-xl font-light text-white/95 leading-relaxed max-w-3xl mx-auto drop-shadow-lg bg-slate-900/40 backdrop-blur-sm rounded-2xl p-6 border border-amber-500/20">
+            Search from 1M+ hotels worldwide. Best price guaranteed, 24/7 support, and easy cancellation.
+          </p>
         </div>
-    </section>
 
-    <!-- Categories Section -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-blue-50/20 -z-10"></div>
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-[16px] font-black text-brand uppercase tracking-[0.4em]">نظام السوق الذكي</span>
-                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
-                    استكشف <span class="text-brand">الفئات</span> المتاحة
-                </h2>
-                <p class="text-slate-500 font-bold">منتجات حصرية من كبار الموردين والمستوردين المعتمدين.</p>
+        <!-- Premium Hotel Search Section -->
+        <div class="container mx-auto ">
+          <!-- Search Type Tabs -->
+          <div class="flex justify-center mb-8">
+            <div
+              class="inline-flex bg-white/95 backdrop-blur-xl rounded-full p-1 shadow-2xl border border-amber-500/20">
+              <button
+                class="px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-full font-semibold transition-all duration-300 shadow-lg">
+                <lucide-icon [img]="Hotel" [size]="18" class="inline mr-2" />
+                Hotels
+              </button>
+              <button
+                class="px-8 py-3 text-slate-600 hover:text-slate-900 font-semibold transition-all duration-300 rounded-full">
+                <lucide-icon [img]="Calendar" [size]="18" class="inline mr-2" />
+                Hotels & Flights
+              </button>
+              <button
+                class="px-8 py-3 text-slate-600 hover:text-slate-900 font-semibold transition-all duration-300 rounded-full">
+                <lucide-icon [img]="MapPin" [size]="18" class="inline mr-2" />
+                Car Rental
+              </button>
             </div>
+          </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <div *ngFor="let cat of categories" [attr.title]="cat.name"
-                    class="group relative overflow-hidden rounded-[2.5rem] shadow-xl aspect-[4/5] cursor-pointer hover:-translate-y-2 transition-all duration-700">
-                    <img [src]="cat.image" [attr.alt]="cat.name" [attr.title]="cat.name"
-                        class="h-full w-full object-cover transition-transform duration-[2000ms] group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent p-6 flex flex-col justify-end">
-                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
-                            <h3 class="text-xl font-black text-white mb-1">{{ cat.name }}</h3>
-                            <p class="text-[11px] text-brand-light font-black uppercase tracking-[0.2em]">{{ cat.count
-                                }} • {{
-                                cat.importers }}</p>
-                        </div>
-                        <div class="mt-6 overflow-hidden h-0 group-hover:h-12 transition-all duration-500">
-                            <button
-                                class="w-full h-12 rounded-xl bg-white text-slate-900 text-xs font-black shadow-xl flex items-center justify-center gap-2">
-                                استعراض الفئة
-                                <lucide-icon name="arrow-left" class="h-3.5 w-3.5"></lucide-icon>
-                            </button>
-                        </div>
-                    </div>
+          <!-- Main Search Form -->
+          <div class="glass rounded-[32px] shadow-premium-dark p-8 custom-search-container">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+              <!-- Destination -->
+              <div class="lg:col-span-4">
+                <div class="search-input-group">
+                  <span class="input-label">Where to?</span>
+                  <div class="input-wrapper">
+                    <mat-icon>place</mat-icon>
+                    <input type="text" [(ngModel)]="destination" placeholder="City, hotel, or airport..."
+                      class="text-lg font-medium text-slate-900">
+                  </div>
                 </div>
-            </div>
-        </div>
-    </section>
+              </div>
 
-    <!-- Marketplace Preview -->
-    <section class="py-32 relative">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-50/30 -z-10 blur-3xl opacity-50"></div>
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
-                <div class="max-w-2xl space-y-4">
-                    <span class="text-[16px] font-black text-brand uppercase tracking-[0.4em]">مخزون B2B فوري</span>
-                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">سوق <span
-                            class="text-brand">الجملة</span></h2>
-                    <p class="text-lg text-slate-500 font-bold max-w-xl">
-                        أحدث العروض الحصرية المتاحة الآن للشحن الفوري لجميع المحافظات.
-                    </p>
+              <!-- Check-in Date -->
+              <div class="lg:col-span-2">
+                <div class="search-input-group date-input-group" (click)="checkInPicker.open()">
+                  <span class="input-label">Check-in</span>
+                  <div class="input-wrapper">
+                    <mat-icon>calendar_today</mat-icon>
+                    <input matInput [matDatepicker]="checkInPicker" [(ngModel)]="checkInDate" [min]="today"
+                      placeholder="Add date" readonly class="cursor-pointer">
+                    <mat-datepicker #checkInPicker></mat-datepicker>
+                  </div>
                 </div>
-                <a routerLink="/shop"
-                    class="group flex items-center gap-3 text-brand font-black uppercase tracking-widest text-xs hover:text-brand-dark transition-all">
-                    عرض السوق بالكامل
-                    <div
-                        class="h-10 w-10 glass rounded-full flex items-center justify-center group-hover:-translate-x-2 transition-transform shadow-premium">
-                        <lucide-icon name="arrow-left" class="h-4.5 w-4.5"></lucide-icon>
-                    </div>
-                </a>
-            </div>
+              </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-                <app-product-card *ngFor="let product of featuredProducts()" [product]="product"></app-product-card>
-            </div>
-        </div>
-    </section>
-
-    <!-- Top Importers -->
-    <section class="py-32 bg-slate-950 text-white relative overflow-hidden rounded-[4rem] mx-4 md:mx-8 mb-20">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,#2650fc_0%,transparent_70%)]">
-        </div>
-        <div class="container mx-auto px-8 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
-                <div class="space-y-4">
-                    <span class="text-[16px] font-black text-yellow-400 uppercase tracking-[0.5em]">الشركاء
-                        النخبة</span>
-                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter text-white">مركز <br /><span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">المستوردين
-                            المعتمدين</span></h2>
+              <!-- Check-out Date -->
+              <div class="lg:col-span-2">
+                <div class="search-input-group date-input-group" (click)="checkOutPicker.open()">
+                  <span class="input-label">Check-out</span>
+                  <div class="input-wrapper">
+                    <mat-icon>event_available</mat-icon>
+                    <input matInput [matDatepicker]="checkOutPicker" [(ngModel)]="checkOutDate" [min]="minCheckOutDate"
+                      placeholder="Add date" readonly class="cursor-pointer">
+                    <mat-datepicker #checkOutPicker></mat-datepicker>
+                  </div>
                 </div>
-                <button
-                    class="h-16 px-12 bg-white text-slate-950 font-black rounded-2xl hover:bg-yellow-400 hover:scale-105 transition-all uppercase text-xs tracking-widest shadow-2xl">
-                    عرض جميع الشركاء
+              </div>
+
+              <!-- Guests & Rooms -->
+              <div class="lg:col-span-2">
+                <div
+                  class="search-input-group w-full h-[72px] px-4 py-3 bg-white border border-slate-200 rounded-[20px] transition-all duration-300 hover:border-amber-500 focus-within:border-amber-500 focus-within:shadow-[0_0_0_4px_rgba(245,158,11,0.15)] flex flex-col justify-center text-left relative z-10">
+                  <span class="input-label mb-1  ">Guests & Rooms</span>
+                  <app-guest-selector [initialGuests]="guestsAndRooms()" (guestsChange)="onGuestChange($event)">
+                  </app-guest-selector>
+                </div>
+              </div>
+
+              <!-- Search Button -->
+              <div class="lg:col-span-2">
+                <button mat-raised-button (click)="onQuickSearch()" class="w-full h-[72px] enhanced-search-btn">
+                  <mat-icon class="mr-2">search</mat-icon>
+                  Search Hotels
                 </button>
+              </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div *ngFor="let m of partners"
-                    class="group relative bg-white/5 backdrop-blur-xl p-8 rounded-[3rem] border border-white/10 hover:border-white/20 hover:-translate-y-4 transition-all duration-700">
-                    <div class="relative z-10 space-y-8">
-                        <div class="flex items-center justify-between">
-                            <div class="h-16 w-16 bg-white rounded-2xl flex items-center justify-center p-3 shadow-xl">
-                                <img [src]="m.img" [attr.alt]="m.name" [attr.title]="m.name"
-                                    class="w-full h-full object-cover rounded-lg">
-                            </div>
-                            <div
-                                class="px-4 py-2 bg-yellow-400/20 border border-yellow-400/40 rounded-full inline-flex items-center gap-2">
-                                <div class="h-1.5 w-1.5 bg-yellow-400 rounded-full animate-pulse"></div>
-                                <span class="text-[10px] font-black text-yellow-400 uppercase tracking-widest">معتمد
-                                    A+</span>
-                            </div>
-                        </div>
+            <!-- Quick Date Pills -->
+            <div class="flex flex-wrap gap-3 mt-6 pt-6 border-t border-slate-200">
+              <button mat-stroked-button (click)="setQuickDates('tonight')"
+                class="!bg-gradient-to-r !from-amber-50 !to-amber-100 hover:!from-amber-100 hover:!to-amber-200 !text-amber-700 hover:!text-amber-800 !rounded-full !border-amber-300 hover:!border-amber-400 !font-medium !shadow-sm hover:!shadow-md">
+                <mat-icon class="mr-1 !text-amber-600 icon-sm">nights_stay</mat-icon>
+                Tonight
+              </button>
+              <button mat-stroked-button (click)="setQuickDates('tomorrow')"
+                class="!bg-gradient-to-r !from-amber-50 !to-amber-100 hover:!from-amber-100 hover:!to-amber-200 !text-amber-700 hover:!text-amber-800 !rounded-full !border-amber-300 hover:!border-amber-400 !font-medium !shadow-sm hover:!shadow-md">
+                <mat-icon class="mr-1 !text-amber-600 icon-sm">wb_sunny</mat-icon>
+                Tomorrow
+              </button>
+              <button mat-stroked-button (click)="setQuickDates('weekend')"
+                class="!bg-gradient-to-r !from-amber-50 !to-amber-100 hover:!from-amber-100 hover:!to-amber-200 !text-amber-700 hover:!text-amber-800 !rounded-full !border-amber-300 hover:!border-amber-400 !font-medium !shadow-sm hover:!shadow-md">
+                <mat-icon class="mr-1 !text-amber-600 icon-sm">weekend</mat-icon>
+                This Weekend
+              </button>
+              <button mat-stroked-button (click)="setQuickDates('week')"
+                class="!bg-gradient-to-r !from-amber-50 !to-amber-100 hover:!from-amber-100 hover:!to-amber-200 !text-amber-700 hover:!text-amber-800 !rounded-full !border-amber-300 hover:!border-amber-400 !font-medium !shadow-sm hover:!shadow-md">
+                <mat-icon class="mr-1 !text-amber-600 icon-sm">date_range</mat-icon>
+                Next Week
+              </button>
+              <button mat-stroked-button (click)="setQuickDates('month')"
+                class="!bg-gradient-to-r !from-amber-50 !to-amber-100 hover:!from-amber-100 hover:!to-amber-200 !text-amber-700 hover:!text-amber-800 !rounded-full !border-amber-300 hover:!border-amber-400 !font-medium !shadow-sm hover:!shadow-md">
+                <mat-icon class="mr-1 !text-amber-600 icon-sm">calendar_month</mat-icon>
+                Next Month
+              </button>
+            </div>
 
-                        <div>
-                            <h3 class="text-2xl font-black text-white mb-1">{{ m.name }}</h3>
-                            <p
-                                class="text-sm font-black text-slate-400 tracking-wider transition-colors group-hover:text-brand">
-                                {{ m.cat }}</p>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
-                            <div>
-                                <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">المخزون
-                                    النشط</p>
-                                <p class="text-lg font-black text-yellow-400">{{ m.stock }}</p>
-                            </div>
-                            <div>
-                                <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">سنوات
-                                    الخبرة</p>
-                                <p class="text-lg font-black text-white">{{ m.active }}</p>
-                            </div>
-                        </div>
-
-                        <button
-                            class="w-full h-14 bg-white/5 hover:bg-brand border border-white/10 hover:border-brand rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">
-                            عرض الملف التجاري
-                        </button>
-                    </div>
+            <!-- Enhanced Filter Options -->
+            <div class="flex flex-wrap items-center justify-between mt-6 pt-6 border-t border-slate-200/50 gap-6">
+              <div class="flex flex-wrap items-center gap-4">
+                <div class="filter-chip" [class.active]="isWorkTrip()" (click)="toggleFilter('work')">
+                  <mat-icon>business_center</mat-icon>
+                  I'm traveling for work
                 </div>
+                <div class="filter-chip" [class.active]="hasSpecialRates()" (click)="toggleFilter('rates')">
+                  <mat-icon>local_offer</mat-icon>
+                  Special rates
+                </div>
+                <div class="filter-chip" [class.active]="hasFreeCancellation()" (click)="toggleFilter('cancellation')">
+                  <mat-icon>free_cancellation</mat-icon>
+                  Free cancellation
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <button mat-button
+                  class="!text-amber-600 hover:!text-amber-700 !font-medium !flex !items-center !gap-2 !px-4 !py-2 hover:!bg-amber-50 !rounded-lg transition-all duration-200">
+                  <mat-icon class="!text-amber-600">flight</mat-icon>
+                  Add flight
+                </button>
+                <button mat-button
+                  class="!text-slate-600 hover:!text-amber-600 !font-medium !flex !items-center !gap-2 !px-4 !py-2 hover:!bg-amber-50 !rounded-lg transition-all duration-200">
+                  <mat-icon class="!text-slate-600">tune</mat-icon>
+                  More filters
+                </button>
+              </div>
             </div>
+          </div>
+
+          <!-- Popular Destinations -->
+          <div class="flex justify-center gap-6 mt-10">
+            <button
+              class="px-6 py-3 text-amber-100 hover:text-white hover:bg-amber-600/20 font-medium rounded-full transition-all duration-300 backdrop-blur-sm border border-amber-500/30 hover:border-amber-400 shadow-lg hover:shadow-xl">
+              <mat-icon class="mr-2 !text-amber-300">location_city</mat-icon>
+              Cairo
+            </button>
+            <span class="text-amber-300/60 flex items-center">•</span>
+            <button
+              class="px-6 py-3 text-amber-100 hover:text-white hover:bg-amber-600/20 font-medium rounded-full transition-all duration-300 backdrop-blur-sm border border-amber-500/30 hover:border-amber-400 shadow-lg hover:shadow-xl">
+              <mat-icon class="mr-2 !text-amber-300">location_city</mat-icon>
+              Dubai
+            </button>
+            <span class="text-amber-300/60 flex items-center">•</span>
+            <button
+              class="px-6 py-3 text-amber-100 hover:text-white hover:bg-amber-600/20 font-medium rounded-full transition-all duration-300 backdrop-blur-sm border border-amber-500/30 hover:border-amber-400 shadow-lg hover:shadow-xl">
+              <mat-icon class="mr-2 !text-amber-300">location_city</mat-icon>
+              Riyadh
+            </button>
+            <span class="text-amber-300/60 flex items-center">•</span>
+            <button
+              class="px-6 py-3 text-amber-100 hover:text-white hover:bg-amber-600/20 font-medium rounded-full transition-all duration-300 backdrop-blur-sm border border-amber-500/30 hover:border-amber-400 shadow-lg hover:shadow-xl">
+              <mat-icon class="mr-2 !text-amber-300">location_city</mat-icon>
+              Istanbul
+            </button>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Stats Bar with animated counters -->
+  <div
+    class="relative z-10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 flex justify-center overflow-hidden">
+    <!-- Background decorations -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-transparent to-gold-500/10"></div>
+    <div class="absolute top-0 left-0 w-full h-full bg-mesh opacity-20"></div>
+
+    <!-- Animated background elements -->
+    <div class="absolute top-4 left-1/4 w-2 h-2 bg-gold-400 rounded-full animate-pulse"></div>
+    <div class="absolute bottom-4 right-1/4 w-2 h-2 bg-primary-400 rounded-full animate-pulse delay-1000"></div>
+
+    <div class="relative flex flex-wrap justify-center">
+      <div
+        class="px-8 py-8 border-r border-white/10 text-center group hover:bg-white/5 transition-all duration-300 cursor-pointer">
+        <div class="flex items-center justify-center mb-2">
+          <lucide-icon [img]="Star" [size]="20" class="text-gold-400 mr-2 group-hover:scale-110 transition-transform" />
+          <div class="font-serif text-3xl font-light text-gold-200 leading-none counter" data-target="12400">0</div>
+        </div>
+        <div
+          class="text-xs tracking-widest uppercase text-white/40 font-normal group-hover:text-white/60 transition-colors">
+          Properties</div>
+      </div>
+      <div
+        class="px-8 py-8 border-r border-white/10 text-center group hover:bg-white/5 transition-all duration-300 cursor-pointer">
+        <div class="flex items-center justify-center mb-2">
+          <lucide-icon [img]="MapPin" [size]="20"
+            class="text-gold-400 mr-2 group-hover:scale-110 transition-transform" />
+          <div class="font-serif text-3xl font-light text-gold-200 leading-none counter" data-target="120">0</div>
+        </div>
+        <div
+          class="text-xs tracking-widest uppercase text-white/40 font-normal group-hover:text-white/60 transition-colors">
+          Countries</div>
+      </div>
+      <div
+        class="px-8 py-8 border-r border-white/10 text-center group hover:bg-white/5 transition-all duration-300 cursor-pointer">
+        <div class="flex items-center justify-center mb-2">
+          <lucide-icon [img]="Star" [size]="20" class="text-gold-400 mr-2 group-hover:scale-110 transition-transform" />
+          <div class="font-serif text-3xl font-light text-gold-200 leading-none">4.9★</div>
+        </div>
+        <div
+          class="text-xs tracking-widest uppercase text-white/40 font-normal group-hover:text-white/60 transition-colors">
+          Guest Rating</div>
+      </div>
+      <div class="px-8 py-8 text-center group hover:bg-white/5 transition-all duration-300 cursor-pointer">
+        <div class="flex items-center justify-center mb-2">
+          <lucide-icon [img]="Users" [size]="20"
+            class="text-gold-400 mr-2 group-hover:scale-110 transition-transform" />
+          <div class="font-serif text-3xl font-light text-gold-200 leading-none counter" data-target="2000000">0</div>
+        </div>
+        <div
+          class="text-xs tracking-widest uppercase text-white/40 font-normal group-hover:text-white/60 transition-colors">
+          Happy Travelers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Destinations -->
+  <section class="py-24 bg-gradient-to-b from-amber-50 to-white">
+    <div class="px-4 md:px-12 container mx-auto ">
+      <div class="flex flex-col lg:flex-row justify-between items-end mb-16">
+        <div class="mb-8 lg:mb-0">
+          <p class="font-mono text-xs tracking-widest uppercase text-amber-700 mb-4 flex items-center gap-2">
+            <lucide-icon [img]="MapPin" [size]="14" />
+            Top Destinations
+          </p>
+          <h2 class="font-serif font-light text-4xl md:text-6xl leading-tight text-slate-900 mb-4">
+            Popular<br>Hotel Destinations
+          </h2>
+          <p class="text-slate-600 max-w-lg">Book hotels in the world's most sought-after destinations with exclusive
+            deals</p>
+        </div>
+        <a routerLink="/hotels"
+          class="group text-amber-600 text-sm tracking-widest uppercase font-semibold flex items-center gap-2 hover:gap-4 transition-all bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-amber-200 hover:border-amber-400 shadow-sm hover:shadow-md">
+          Explore all
+          <lucide-icon [img]="MapPin" [size]="16" class="group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cairo - Featured Large -->
+        <div
+          class="relative overflow-hidden rounded-3xl cursor-pointer group lg:row-span-2 lg:col-span-1 hover:shadow-premium transition-all duration-700">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b3?auto=format&fit=crop&w=900&q=80"
+            alt="Cairo"
+            class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+          <!-- Floating badge -->
+          <div
+            class="absolute top-6 right-6 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+            <div
+              class="bg-amber-500/90 backdrop-blur-md border border-amber-400 rounded-full px-4 py-2 text-white text-xs font-semibold tracking-wider">
+              TOP RATED
+            </div>
+          </div>
+
+          <div
+            class="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-500 group-hover:translate-y-2">
+            <p class="text-xs tracking-widest uppercase text-amber-300 mb-2 font-medium">Egypt</p>
+            <h3 class="font-serif text-3xl font-light text-white leading-tight mb-2">Cairo</h3>
+            <p class="text-sm text-white/70 mb-4">Ancient wonders & luxury hotels</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-white/60">450+ hotels from $45</p>
+              <div class="flex items-center gap-1 text-amber-300">
+                <lucide-icon [img]="Star" [size]="12" class="fill-current" />
+                <span class="text-xs font-medium">4.7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dubai -->
+        <div
+          class="relative overflow-hidden rounded-3xl cursor-pointer group hover:shadow-premium transition-all duration-700">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80"
+            alt="Dubai"
+            class="w-full h-64 object-cover transform transition-transform duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <p class="text-xs tracking-widest uppercase text-amber-300 mb-2 font-medium">UAE</p>
+            <h3 class="font-serif text-2xl font-light text-white leading-tight mb-2">Dubai</h3>
+            <p class="text-sm text-white/70 mb-4">Luxury & innovation</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-white/60">680+ hotels from $60</p>
+              <div class="flex items-center gap-1 text-amber-300">
+                <lucide-icon [img]="Star" [size]="12" class="fill-current" />
+                <span class="text-xs font-medium">4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Riyadh -->
+        <div
+          class="relative overflow-hidden rounded-3xl cursor-pointer group hover:shadow-premium transition-all duration-700">
+          <img src="https://images.unsplash.com/photo-1589942368342-344c0f1bcfeb?auto=format&fit=crop&w=600&q=80"
+            alt="Riyadh"
+            class="w-full h-64 object-cover transform transition-transform duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <p class="text-xs tracking-widest uppercase text-amber-300 mb-2 font-medium">Saudi Arabia</p>
+            <h3 class="font-serif text-2xl font-light text-white leading-tight mb-2">Riyadh</h3>
+            <p class="text-sm text-white/70 mb-4">Modern Arabian hospitality</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-white/60">320+ hotels from $55</p>
+              <div class="flex items-center gap-1 text-amber-300">
+                <lucide-icon [img]="Star" [size]="12" class="fill-current" />
+                <span class="text-xs font-medium">4.6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Istanbul -->
+        <div
+          class="relative overflow-hidden rounded-3xl cursor-pointer group hover:shadow-premium transition-all duration-700">
+          <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=600&q=80"
+            alt="Istanbul"
+            class="w-full h-64 object-cover transform transition-transform duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <p class="text-xs tracking-widest uppercase text-amber-300 mb-2 font-medium">Turkey</p>
+            <h3 class="font-serif text-2xl font-light text-white leading-tight mb-2">Istanbul</h3>
+            <p class="text-sm text-white/70 mb-4">East meets West</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-white/60">890+ hotels from $40</p>
+              <div class="flex items-center gap-1 text-amber-300">
+                <lucide-icon [img]="Star" [size]="12" class="fill-current" />
+                <span class="text-xs font-medium">4.7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- London -->
+        <div
+          class="relative overflow-hidden rounded-3xl cursor-pointer group hover:shadow-premium transition-all duration-700">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80"
+            alt="London"
+            class="w-full h-64 object-cover transform transition-transform duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <p class="text-xs tracking-widest uppercase text-amber-300 mb-2 font-medium">UK</p>
+            <h3 class="font-serif text-2xl font-light text-white leading-tight mb-2">London</h3>
+            <p class="text-sm text-white/70 mb-4">Royal city experiences</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-white/60">1200+ hotels from $70</p>
+              <div class="flex items-center gap-1 text-amber-300">
+                <lucide-icon [img]="Star" [size]="12" class="fill-current" />
+                <span class="text-xs font-medium">4.6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Hotels -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Featured <span class="text-amber-600">Hotels</span>
+          </h2>
+          <p class="text-xl text-slate-600">Handpicked accommodations for exceptional stays</p>
+        </div>
+        <a routerLink="/hotels" class="text-amber-600 hover:text-amber-700 font-semibold flex items-center gap-2">
+          View all hotels
+          <lucide-icon [img]="MapPin" [size]="20" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (hotel of featuredHotels(); track hotel.id) {
+        <app-hotel-card [hotel]="hotel"></app-hotel-card>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators - Advanced Tree Layout -->
+  <section class="trust-section">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h3 class="trust-title">Why Travel With Us?</h3>
+        <p class="trust-subtitle">Experience the difference with our comprehensive travel services</p>
+      </div>
+
+      <!-- Advanced Tree Structure -->
+      <div class="tree-wrap" #treeWrap>
+        <!-- SVG connecting lines -->
+        <svg class="tree-svg" #treeSvg aria-hidden="true"></svg>
+
+        <!-- Central Hub -->
+        <div class="hub-row">
+          <div class="hub" #hub>
+            <lucide-icon [img]="Star" [size]="40" class="text-white" />
+          </div>
+        </div>
+
+        <!-- Tree Cards Grid -->
+        <div class="cards-grid" #cardsGrid>
+          <!-- Best Price -->
+          <div class="card" #card0>
+            <div class="card-icon">
+              <lucide-icon [img]="Star" [size]="26" class="text-white" />
+            </div>
+            <div class="card-text">
+              <h4>Best Price Guarantee</h4>
+              <p>Find a lower price? We'll match it</p>
+            </div>
+          </div>
+
+          <!-- 24/7 Support -->
+          <div class="card" #card1>
+            <div class="card-icon">
+              <lucide-icon [img]="Users" [size]="26" class="text-white" />
+            </div>
+            <div class="card-text">
+              <h4>24/7 Support</h4>
+              <p>Travel assistance whenever you need it</p>
+            </div>
+          </div>
+
+          <!-- Free Cancellation -->
+          <div class="card" #card2>
+            <div class="card-icon">
+              <lucide-icon [img]="Calendar" [size]="26" class="text-white" />
+            </div>
+            <div class="card-text">
+              <h4>Free Cancellation</h4>
+              <p>Flexible booking options available</p>
+            </div>
+          </div>
+
+          <!-- Worldwide Coverage -->
+          <div class="card" #card3>
+            <div class="card-icon">
+              <lucide-icon [img]="MapPin" [size]="26" class="text-white" />
+            </div>
+            <div class="card-text">
+              <h4>Worldwide Coverage</h4>
+              <p>Hotels in 120+ countries</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Roots -->
+        <div class="roots">
+          <div class="root root-1"></div>
+          <div class="root root-2"></div>
+          <div class="root root-3"></div>
+          <div class="root root-4"></div>
+          <div class="root root-5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

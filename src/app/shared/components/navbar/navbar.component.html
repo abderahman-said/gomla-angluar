@@ -1,77 +1,40 @@
-<header class="sticky bg-white top-0 z-50 py-3 border-b border-white/20 transition-all duration-500">
-    <div class="container mx-auto px-4 md:px-8 h-18 lg:h-22 flex items-center justify-between">
-        <a routerLink="/" class="flex items-center gap-3 group">
-            <img src="/logo.png" alt="بالجملة" title="بالجملة"
-                class="h-16 w-auto object-contain rounded-xl  transition-transform group-hover:scale-110 duration-500">
-        </a>
-
-        <!-- Desktop Nav -->
-        <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
-            <a *ngFor="let item of navLinks" [routerLink]="item.href" routerLinkActive="text-brand"
-                class="text-xl font-black uppercase tracking-widest text-slate-900 hover:text-brand transition-colors relative group py-2">
-                {{ item.name }}
-                <span
-                    class="absolute right-0 -bottom-1 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
-            </a>
-        </nav>
-
-        <div class="flex items-center gap-2 sm:gap-4">
-            <div class="hidden md:flex items-center gap-2">
-                <button (click)="toggleSearch()"
-                    class="h-11 w-11 glass rounded-xl flex items-center justify-center text-slate-900 hover:bg-white transition-all shadow-sm"
-                    aria-label="فتح البحث">
-                    <lucide-icon name="search" class="h-5 w-5"></lucide-icon>
-                </button>
-
-                <ng-container *ngIf="isLoggedIn(); else loginBtn">
-                    <div class="flex items-center gap-2">
-                        <a routerLink="/dashboard"
-                            class="h-11 px-6 bg-[#2650fc]/10 rounded-xl flex items-center justify-center text-xs font-black uppercase tracking-widest text-[#2650fc] hover:bg-white transition-all gap-2">
-                            <lucide-icon name="layout-dashboard" class="h-4 w-4"></lucide-icon>
-                            لوحة التحكم
-                        </a>
-                        <button (click)="logout()"
-                            class="h-11 w-11 glass rounded-xl flex items-center justify-center text-red-500 hover:bg-white transition-all shadow-sm"
-                            title="تسجيل الخروج">
-                            <lucide-icon name="log-out" class="h-5 w-5"></lucide-icon>
-                        </button>
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-lg shadow-sm z-50 border-b border-gray-100">
+    <div class="container mx-auto px-4 md:px-8">
+        <nav class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
+                        <lucide-icon [img]="Star" [size]="20" class="text-white" />
                     </div>
-                </ng-container>
+                    <span class="text-2xl font-bold text-slate-900">Gomla</span>
+                </div>
 
-                <ng-template #loginBtn>
-                    <a routerLink="/auth/login"
-                        class="h-11 px-6 glass rounded-xl flex items-center justify-center text-xs font-black uppercase tracking-widest text-blue-950 hover:bg-white transition-all shadow-sm">
-                        تسجيل الدخول
-                    </a>
-                </ng-template>
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#" class="text-slate-600 hover:text-amber-600 font-medium transition-colors">Hotels</a>
+                    <a href="#" class="text-slate-600 hover:text-amber-600 font-medium transition-colors">Flights</a>
+                    <a href="#" class="text-slate-600 hover:text-amber-600 font-medium transition-colors">Car Rental</a>
+                    <a href="#" class="text-slate-600 hover:text-amber-600 font-medium transition-colors">Deals</a>
+                </div>
             </div>
 
-            <button
-                class="h-11 w-11 bg-[#2650fc] text-white rounded-xl flex items-center justify-center relative hover:bg-brand-dark transition-all shadow-lg shadow-brand/20">
-                <lucide-icon name="shopping-bag" class="h-5 w-5"></lucide-icon>
-                <span *ngIf="cartCount > 0"
-                    class="absolute -top-1 -right-1 bg-yellow-400 text-slate-900 text-[16px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white">
-                    {{ cartCount }}
-                </span>
-            </button>
-
-            <button title="القائمة"
-                class="lg:hidden h-11 w-11 glass rounded-xl flex items-center justify-center text-blue-950 shadow-sm"
-                (click)="toggleMobileMenu()">
-                <lucide-icon name="menu" class="h-5 w-5"></lucide-icon>
-                <lucide-icon name="x" class="h-5 w-5"></lucide-icon>
-            </button>
-        </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div *ngIf="isMobileMenuOpen()"
-        class="lg:hidden absolute top-full left-0 w-full glass border-b border-blue-100 py-6 px-6 flex flex-col gap-4 shadow-2xl animate-slide-up">
-        <a *ngFor="let item of navLinks" [routerLink]="item.href"
-            class="text-sm font-black uppercase tracking-widest text-blue-950 py-4 px-6 rounded-2xl hover:bg-blue-50 transition-all flex items-center justify-between"
-            (click)="isMobileMenuOpen.set(false)">
-            {{ item.name }}
-            <lucide-icon name="arrow-right" class="h-4 w-4 text-blue-200"></lucide-icon>
-        </a>
+            <!-- User Actions -->
+            <div class="flex items-center gap-4">
+                <button class="flex items-center gap-2 text-slate-600 hover:text-amber-600 transition-colors">
+                    <lucide-icon [img]="Heart" [size]="18" />
+                    <span class="hidden md:inline">Favorites</span>
+                </button>
+                <button
+                    class="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors">
+                    <lucide-icon [img]="Users" [size]="18" />
+                    <span class="hidden md:inline">Sign In</span>
+                </button>
+                <button class="lg:hidden">
+                    <lucide-icon [img]="Search" [size]="20" class="text-slate-600" />
+                </button>
+            </div>
+        </nav>
     </div>
 </header>

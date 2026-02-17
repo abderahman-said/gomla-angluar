@@ -19,7 +19,7 @@ input[type="range"] {
     @apply appearance-none bg-slate-200 h-2 rounded-lg cursor-pointer;
 
     &::-webkit-slider-thumb {
-        @apply appearance-none w-5 h-5 bg-brand rounded-full border-2 border-white shadow-md transition-transform;
+        @apply appearance-none w-5 h-5 bg-primary-600 rounded-full border-2 border-white shadow-md transition-transform;
 
         &:hover {
             @apply scale-110;
