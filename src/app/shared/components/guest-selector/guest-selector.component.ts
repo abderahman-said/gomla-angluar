@@ -21,7 +21,7 @@ export interface GuestSelection {
         class="w-full text-left outline-none"
       >
         <div class="flex items-center gap-3">
-          <lucide-icon [img]="Users" [size]="20" class="text-amber-500" />
+          <lucide-icon [img]="Users" [size]="20" class="text-purple-500" />
           <div class="flex flex-col">
             <span class="text-slate-900 font-bold text-base leading-tight">{{ guestSummary }}</span>
           </div>

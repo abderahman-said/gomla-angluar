@@ -1,0 +1,200 @@
+// Custom Purple Theme for Angular Material
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+// Define purple color palette
+$purple-primary: (
+    50: #f5f3ff,
+    100: #ede9fe,
+    200: #ddd6fe,
+    300: #c4b5fd,
+    400: #a78bfa,
+    500: #8b5cf6,
+    600: #7c3aed,
+    700: #6d28d9,
+    800: #5b21b6,
+    900: #4c1d95,
+    contrast: (50: #4c1d95,
+        100: #4c1d95,
+        200: #4c1d95,
+        300: #4c1d95,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+    )
+);
+
+$purple-accent: (
+    50: #f8fafc,
+    100: #f1f5f9,
+    200: #e2e8f0,
+    300: #cbd5e1,
+    400: #94a3b8,
+    500: #64748b,
+    600: #475569,
+    700: #334155,
+    800: #1e293b,
+    900: #0f172a,
+    contrast: (50: #0f172a,
+        100: #0f172a,
+        200: #0f172a,
+        300: #0f172a,
+        400: #0f172a,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+    )
+);
+
+// Define the theme
+$purple-theme: mat.define-theme((color: (theme-type: light,
+                primary: $purple-primary,
+                accent: $purple-accent,
+            ),
+            typography: (brand-family: 'Inter, sans-serif',
+                plain-family: 'Inter, sans-serif',
+            ),
+            density: (scale: 0,
+            )));
+
+// Mixin to apply the theme
+@mixin purple-theme {
+    @include mat.all-component-themes($purple-theme);
+
+    // Custom overrides for Material components
+    .mat-mdc-form-field {
+        .mat-mdc-form-field-flex {
+            .mat-mdc-form-field-outline {
+
+                .mdc-notched-outline__leading,
+                .mdc-notched-outline__notch,
+                .mdc-notched-outline__trailing {
+                    border-color: #e2e8f0;
+                    border-width: 2px;
+                }
+            }
+
+            &.mdc-text-field--focused {
+                .mat-mdc-form-field-outline {
+
+                    .mdc-notched-outline__leading,
+                    .mdc-notched-outline__notch,
+                    .mdc-notched-outline__trailing {
+                        border-color: #8b5cf6;
+                        border-width: 2px;
+                    }
+                }
+            }
+
+            &.mdc-text-field--hover {
+                .mat-mdc-form-field-outline {
+
+                    .mdc-notched-outline__leading,
+                    .mdc-notched-outline__notch,
+                    .mdc-notched-outline__trailing {
+                        border-color: #cbd5e1;
+                    }
+                }
+            }
+        }
+
+        .mat-mdc-form-field-label {
+            color: #64748b;
+            font-weight: 600;
+
+            &.mdc-floating-label {
+                &.mdc-floating-label--focused {
+                    color: #8b5cf6;
+                }
+            }
+        }
+
+        .mat-mdc-input-element {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+    }
+
+    // Date picker customizations
+    .mat-mdc-datepicker-content {
+        .mat-calendar {
+            .mat-calendar-body-cell {
+                &.mat-calendar-body-selected {
+                    background-color: #8b5cf6;
+                    color: white;
+                }
+
+                &.mat-calendar-body-today:not(.mat-calendar-body-selected) {
+                    border-color: #8b5cf6;
+                }
+
+                &:hover {
+                    background-color: #ede9fe;
+                }
+            }
+
+            .mat-calendar-header {
+                .mat-calendar-period-button {
+                    color: #1e293b;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    // Select dropdown customizations
+    .mat-mdc-select-panel {
+        .mat-mdc-option {
+            &.mat-mdc-option-selected {
+                background-color: #ede9fe;
+                color: #5b21b6;
+            }
+
+            &:hover {
+                background-color: #f8fafc;
+            }
+        }
+    }
+
+    // Checkbox customizations
+    .mat-mdc-checkbox {
+        .mdc-form-field {
+            .mdc-checkbox__native-control:checked~.mdc-checkbox__background {
+                border-color: #8b5cf6;
+                background-color: #8b5cf6;
+            }
+
+            .mdc-checkbox__native-control:focus~.mdc-checkbox__background {
+                border-color: #8b5cf6;
+            }
+        }
+    }
+
+    // Button customizations
+    .mat-mdc-raised-button {
+        &.mat-primary {
+            background: linear-gradient(to right, #8b5cf6, #7c3aed);
+
+            &:hover {
+                background: linear-gradient(to right, #7c3aed, #6d28d9);
+            }
+        }
+    }
+
+    .mat-mdc-stroked-button {
+        &.mat-primary {
+            border-color: #8b5cf6;
+            color: #8b5cf6;
+
+            &:hover {
+                background-color: #ede9fe;
+            }
+        }
+    }
+}

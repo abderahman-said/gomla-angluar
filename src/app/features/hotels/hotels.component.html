@@ -15,7 +15,7 @@
             <select 
               [value]="sortBy()" 
               (change)="onSortChange($event)"
-              class="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+              class="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             >
               @for (option of sortOptions; track option.value) {
                 <option [value]="option.value">{{ option.label }}</option>
@@ -26,16 +26,16 @@
           <div class="flex items-center border border-slate-300 rounded-lg">
             <button
               (click)="toggleViewMode()"
-              [class]="viewMode() === 'grid' ? 'bg-amber-500 text-white' : 'bg-white text-slate-700'"
-              class="p-2 rounded-l-lg hover:bg-amber-600 transition-colors"
+              [class]="viewMode() === 'grid' ? 'bg-purple-500 text-white' : 'bg-white text-slate-700'"
+              class="p-2 rounded-l-lg hover:bg-purple-600 transition-colors"
               title="Grid View"
             >
               <lucide-icon [img]="Grid" [size]="18" />
             </button>
             <button
               (click)="toggleViewMode()"
-              [class]="viewMode() === 'list' ? 'bg-amber-500 text-white' : 'bg-white text-slate-700'"
-              class="p-2 rounded-r-lg hover:bg-amber-600 transition-colors"
+              [class]="viewMode() === 'list' ? 'bg-purple-500 text-white' : 'bg-white text-slate-700'"
+              class="p-2 rounded-r-lg hover:bg-purple-600 transition-colors"
               title="List View"
             >
               <lucide-icon [img]="List" [size]="18" />
@@ -76,7 +76,7 @@
             <p class="text-slate-600 mb-6">Try adjusting your filters or search criteria</p>
             <button
               (click)="onFiltersChange({})"
-              class="bg-amber-500 hover:bg-amber-600 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+              class="bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-3 rounded-lg transition-colors"
             >
               Clear Filters
             </button>
@@ -120,7 +120,7 @@
                             </p>
                           </div>
                           <div class="text-right">
-                            <div class="text-2xl font-bold text-amber-600">${{ hotel.priceFrom }}</div>
+                            <div class="text-2xl font-bold text-purple-600">${{ hotel.priceFrom }}</div>
                             <div class="text-sm text-slate-500">per night</div>
                           </div>
                         </div>
@@ -128,7 +128,7 @@
                         <div class="flex items-center gap-4 text-sm">
                           <div class="flex items-center gap-1">
                             @for (i of getStarArray(hotel.starRating); track i) {
-                              <lucide-icon [img]="Star" [size]="14" class="text-amber-400 fill-amber-400" />
+                              <lucide-icon [img]="Star" [size]="14" class="text-purple-400 fill-purple-400" />
                             }
                           </div>
                           <span class="text-slate-600">{{ hotel.guestRating }}/10</span>
@@ -137,7 +137,7 @@
                         
                         <div class="flex flex-wrap gap-2 mt-3">
                           @for (amenity of hotel.amenities.slice(0, 3); track amenity) {
-                            <span class="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded border border-amber-200">
+                            <span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-200">
                               {{ amenity }}
                             </span>
                           }
@@ -170,7 +170,7 @@
                     } @else {
                       <button
                         (click)="onPageChange(page)"
-                        [class]="currentPage() === page ? 'bg-amber-500 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'"
+                        [class]="currentPage() === page ? 'bg-purple-500 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'"
                         class="px-3 py-2 rounded-lg border border-slate-300 text-sm font-medium"
                       >
                         {{ page }}

@@ -1,0 +1,285 @@
+@use '@angular/material' as mat;
+@use './app/shared/themes/purple-theme' as purple;
+
+@include mat.core();
+@include purple.purple-theme();
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --glow-color: rgba(37, 99, 235, 0.3);
+        --background: 255 255 255;
+        --foreground: 15 23 42;
+        --card: 255 255 255;
+        --card-foreground: 15 23 42;
+
+        /* Material Design Colors */
+        --mdc-theme-primary: #8b5cf6;
+        --mdc-theme-secondary: #64748b;
+        --mdc-theme-surface: #ffffff;
+        --mdc-theme-on-primary: #ffffff;
+        --mdc-theme-on-secondary: #ffffff;
+        --mdc-theme-on-surface: #1e293b;
+    }
+
+    .dark {
+        --glow-color: rgba(59, 130, 246, 0.4);
+        --background: 15 23 42;
+        --foreground: 248 250 252;
+        --card: 30 41 59;
+        --card-foreground: 248 250 252;
+    }
+
+    html,
+    body {
+        @apply font-sans text-slate-900 bg-white antialiased dark:bg-slate-900 dark:text-slate-100;
+        font-family: 'Cairo', 'Inter', 'Tajawal', sans-serif;
+        direction: ltr;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    html[dir="ltr"],
+    html[dir="ltr"] body {
+        direction: ltr;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading text-slate-950 tracking-tight dark:text-slate-50;
+    }
+}
+
+@layer components {
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+    }
+
+    .price-badge {
+        @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300;
+    }
+
+    .btn-primary {
+        @apply px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-200 dark:bg-purple-500 dark:hover:bg-purple-600;
+    }
+
+    .btn-secondary {
+        @apply px-6 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition-colors duration-200 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700;
+    }
+
+    .input-field {
+        @apply w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100;
+    }
+}
+
+@layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl dark:bg-slate-900/70 dark:border-slate-700/30;
+    }
+
+    .glass-dark {
+        @apply bg-slate-900/80 backdrop-blur-xl border border-slate-700/30 shadow-2xl;
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-purple-500 to-accent;
+    }
+
+    .bg-mesh {
+        background-image:
+            radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0, transparent 50%),
+            radial-gradient(at 50% 0%, rgba(20, 184, 166, 0.1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%);
+    }
+
+    .bg-mesh-dark {
+        background-image:
+            radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.2) 0, transparent 50%),
+            radial-gradient(at 50% 0%, rgba(20, 184, 166, 0.15) 0, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.2) 0, transparent 50%);
+    }
+
+    .shadow-premium {
+        box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.12);
+    }
+
+    .animate-shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+    }
+
+    .skeleton {
+        @apply animate-shimmer bg-slate-200 dark:bg-slate-700 rounded;
+    }
+}
+
+/* Explicitly define Material Icons */
+.material-icons,
+.mat-icon {
+    font-family: 'Material Icons' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Enhanced Material Date Picker Overrides */
+.mat-mdc-datepicker-content,
+.mat-datepicker-content {
+    background-color: #ffffff !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(20px) !important;
+
+    --mat-datepicker-calendar-container-background-color: #ffffff;
+    --mat-sys-surface-container-high: #ffffff;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, #8b5cf6, #7c3aed, #8b5cf6) !important;
+        animation: shimmer-border 3s ease-in-out infinite !important;
+    }
+}
+
+/* Enhanced Form Field and Input styles maintained from CSS */
+.mat-mdc-form-field {
+    .mat-mdc-form-field-flex {
+        .mat-mdc-form-field-outline {
+
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: #e2e8f0 !important;
+                border-width: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+        }
+
+        &.mdc-text-field--focused {
+            .mat-mdc-form-field-outline {
+
+                .mdc-notched-outline__leading,
+                .mdc-notched-outline__notch,
+                .mdc-notched-outline__trailing {
+                    border-color: #8b5cf6 !important;
+                    border-width: 2.5px !important;
+                    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1), 0 4px 12px rgba(139, 92, 246, 0.15) !important;
+                }
+            }
+        }
+
+        &.mdc-text-field--hover:not(.mdc-text-field--focused) {
+            .mat-mdc-form-field-outline {
+
+                .mdc-notched-outline__leading,
+                .mdc-notched-outline__notch,
+                .mdc-notched-outline__trailing {
+                    border-color: #cbd5e1 !important;
+                    border-width: 2px !important;
+                }
+            }
+        }
+    }
+
+    .mat-mdc-form-field-label {
+        color: #64748b !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%) !important;
+        padding: 0 8px !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+
+        &.mdc-floating-label {
+            &.mdc-floating-label--focused {
+                color: #8b5cf6 !important;
+                font-weight: 700 !important;
+                transform: scale(1.05) translateY(-2px) !important;
+            }
+        }
+    }
+
+    .mat-mdc-input-element {
+        font-size: 1.125rem !important;
+        font-weight: 500 !important;
+        color: #1e293b !important;
+        padding: 16px 12px !important;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
+
+        &::placeholder {
+            color: #94a3b8 !important;
+            font-weight: 400 !important;
+            opacity: 0.8;
+        }
+
+        &:focus {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%) !important;
+            outline: none !important;
+        }
+    }
+
+    .mat-mdc-form-field-icon-prefix {
+        color: #8b5cf6 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-right: 12px !important;
+        font-size: 20px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+        color: #8b5cf6 !important;
+
+        .mat-mdc-icon-button {
+            &:hover {
+                background-color: rgba(139, 92, 246, 0.1) !important;
+                transform: scale(1.1) !important;
+            }
+        }
+    }
+
+    &.mat-mdc-form-field-appearance-outline {
+        .mat-mdc-text-field-wrapper {
+            height: 60px !important;
+
+            .mat-mdc-form-field-flex {
+                height: 60px !important;
+                align-items: center !important;
+                background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+                border-radius: 16px !important;
+                transition: all 0.3s ease !important;
+
+                &:hover {
+                    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1) !important;
+                    transform: translateY(-1px) !important;
+                }
+            }
+        }
+    }
+}
