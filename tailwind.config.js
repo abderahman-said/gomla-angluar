@@ -130,5 +130,16 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.glass': {
+          '@apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl dark:bg-slate-900/70 dark:border-slate-700/30': {},
+        },
+        '.glass-dark': {
+          '@apply bg-slate-900/80 backdrop-blur-xl border border-slate-700/30 shadow-2xl': {},
+        },
+      })
+    },
+  ],
 }

@@ -2,59 +2,51 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
 
-// Define purple color palette
-$purple-primary: (
-    50: #f5f3ff,
-    100: #ede9fe,
-    200: #ddd6fe,
-    300: #c4b5fd,
-    400: #a78bfa,
-    500: #8b5cf6,
-    600: #7c3aed,
-    700: #6d28d9,
-    800: #5b21b6,
-    900: #4c1d95,
-    contrast: (50: #4c1d95,
-        100: #4c1d95,
-        200: #4c1d95,
-        300: #4c1d95,
-        400: #ffffff,
-        500: #ffffff,
-        600: #ffffff,
-        700: #ffffff,
-        800: #ffffff,
-        900: #ffffff,
-    )
-);
+// Define purple color palette (M3 compatible 0-100 tones)
+// Primary palette based on #8b5cf6
+// Define purple color palette (M3 compatible 0-100 tones)
+// We use built-in palettes as bases to ensure all required M3 keys (secondary, neutral, error, etc.) are present
+$purple-primary: map.merge(mat.$violet-palette, (0: #000000,
+            10: #21005d,
+            20: #381e72,
+            25: #442b81,
+            30: #50378f,
+            35: #5c449e,
+            40: #6750a4,
+            50: #7f67be,
+            60: #9a82db,
+            70: #b69df8,
+            80: #d0bcff,
+            90: #eaddff,
+            95: #f6edff,
+            98: #fff7ff,
+            99: #fffbff,
+            100: #ffffff,
+        ));
 
-$purple-accent: (
-    50: #f8fafc,
-    100: #f1f5f9,
-    200: #e2e8f0,
-    300: #cbd5e1,
-    400: #94a3b8,
-    500: #64748b,
-    600: #475569,
-    700: #334155,
-    800: #1e293b,
-    900: #0f172a,
-    contrast: (50: #0f172a,
-        100: #0f172a,
-        200: #0f172a,
-        300: #0f172a,
-        400: #0f172a,
-        500: #ffffff,
-        600: #ffffff,
-        700: #ffffff,
-        800: #ffffff,
-        900: #ffffff,
-    )
-);
+// Tertiary palette based on #64748b, using blue-palette as base
+$purple-tertiary: map.merge(mat.$blue-palette, (0: #000000,
+            10: #001f28,
+            20: #003544,
+            25: #004153,
+            30: #004d62,
+            35: #005971,
+            40: #006681,
+            50: #2380a0,
+            60: #469ab9,
+            70: #64b5d4,
+            80: #81d1f1,
+            90: #bde9ff,
+            95: #e0f4ff,
+            98: #f6fbff,
+            99: #fdfbff,
+            100: #ffffff,
+        ));
 
 // Define the theme
 $purple-theme: mat.define-theme((color: (theme-type: light,
                 primary: $purple-primary,
-                accent: $purple-accent,
+                tertiary: $purple-tertiary,
             ),
             typography: (brand-family: 'Inter, sans-serif',
                 plain-family: 'Inter, sans-serif',
